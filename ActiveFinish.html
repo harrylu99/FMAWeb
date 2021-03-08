@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank you</title>
+</head>
+<body>
+
+    <br> <br>
+    <h2 class="text-success text-center">Thanks for your contribution!</h2>
+    <br>
+    
+    <h2 class="text-success text-center">For more information, please contact <a href="https://www.fma.govt.nz" class="text-primary"> FMA </a> for more</h2>
+    
+    <br>
+    
+    <h2 class="text-success text-center">Otherwise, log out and close your browser</h2>
+    
+    
+   
+</body>
+    
+    
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+    document.getElementById('submitBtn').onclick=function(){
+        var name = document.getElementById('name').value;
+        var phone = document.getElementById('phone').value;
+        var pick_up_address = document.getElementById('pick_up_address').value;
+        var destination = document.getElementById('destination').value;
+        var pick_up_date = document.getElementById('pick_up_date').value;
+        var pick_up_time = document.getElementById('pick_up_time').value;
+        // name cannot be empty
+        if (name == '') {
+            alert("name cannot be empty");
+            return false;
+        }
+        // phone cannot be empty
+        if (phone == '') {
+            alert("phone cannot be empty");
+            return false;
+        }
+        // pick_up_address cannot be empty
+        if (pick_up_address == '') {
+            alert("pick up address cannot be empty");
+            return false;
+        }
+        // destination cannot be empty
+        if (destination == '') {
+            alert("destination cannot be empty");
+            return false;
+        }
+        if (pick_up_date == '') {
+            alert("pick up date cannot be empty");
+            return false;
+        }
+        if (pick_up_time == '') {
+            alert("pick up time cannot be empty");
+            return false;
+        }
+
+        // var data = $('#bookForm').serialize();
+        var data = "name="+name+"&phone="+phone+"&pick_up_address="+pick_up_address+"&destination="+destination+"&pick_up_date="+pick_up_date+"&pick_up_time="+pick_up_time
+        var url = "?action=book";
+        var xmlhttp;
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp=new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState==4) {
+                if (xmlhttp.status==200) {
+                    var data = JSON.parse(xmlhttp.responseText);
+                    if (data.error_no == 0) {
+                        alert(data.message);
+                        window.location.reload();
+                    } else {
+                        alert(data.message);
+                    }
+                } else {
+                    alert('error');
+                }
+            }
+        }
+        xmlhttp.open("POST", url, true);
+        xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        xmlhttp.send(data);
+    };
+});
+</script>
+</html>

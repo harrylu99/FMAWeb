@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 226</title>
+</head>
+<body>
+
+    <br> <br>
+    <h2 class="text-success text-center">Section 226</h2>
+    <br>
+    
+226 Crown contribution: kick-start contributions
+        <br>    <br>
+(1)
+[Repealed]
+        <br>    <br>
+(1A)
+The contribution must be paid as soon as practicable after the date provided by subsection (1B) or (1C).
+        <br>    <br>
+(1B)
+Unless subsection (1C) applies, the date for the purposes of subsection (1A) is the last day of the 62-day period that starts on either the date under paragraph (a) or the date under paragraph (b)—
+        <br>    <br>
+(a)
+the date under this paragraph is the earlier of—
+        <br>    <br>
+(i)
+the date, decided by the Commissioner, when the Commissioner receives the first contribution in respect of A, if A is a person to whom subpart 1 of Part 3 applies:
+        <br>    <br>
+(ii)
+the date that the Commissioner is given notice or otherwise knows that A is a member of the KiwiSaver scheme:
+        <br>    <br>
+(b)    
+the date under this paragraph is the date, decided by the Commissioner, when A is first a member or must first become a member as provided by section 15(1)﻿(b) or 36(1)﻿(b).
+        <br>    <br>
+(1C)
+If A has transferred to their first KiwiSaver scheme from a complying superannuation fund, and A was a member of the complying superannuation fund for more than 62 days before transferring, the date for the purposes of subsection (1A) is the day on which the Commissioner is given notice that A has transferred or the day, decided by the Commissioner, that A has transferred.
+        <br>    <br>
+(2)
+The provider must use the contribution allocation for A to credit the contribution across the investment products of the KiwiSaver scheme to which A has subscribed or been allocated.
+        <br>    <br>
+(2B)
+The contribution must vest in A immediately after it is paid to the provider, despite any provision to the contrary.
+        <br>    <br>
+(3)
+[Repealed]
+        <br>    <br>
+(4)
+    
+[Repealed]
+    
+       <br>    <br>
+    
+    
+    
+    
+    Section 226 heading: amended, on 2 November 2012, by section 236 of the Taxation (Annual Rates, Returns Filing, and Remedial Matters) Act 2012 (2012 No 88).
+        <br>   
+Section 226(1): repealed (with effect at 2 pm on 21 May 2015), on 27 May 2015, by section 5 of the KiwiSaver Budget Measures Act 2015 (2015 No 55).
+        <br>   
+Section 226(1A): inserted (with effect on 1 July 2007), on 19 December 2007, by section 98(1) of the Taxation (KiwiSaver) Act 2007 (2007 No 110).
+        <br>   
+Section 226(1B): replaced (with effect on 1 May 2015), on 27 May 2015, by section 4(2) of the KiwiSaver Budget Measures Act 2015 (2015 No 55).
+        <br>    
+Section 226(1B): amended, on 1 April 2020, by section 47(1) of the Taxation (KiwiSaver, Student Loans, and Remedial Matters) Act 2020 (2020 No 5).
+        <br>   
+Section 226(1C): inserted, on 19 December 2007, by section 98(2) of the Taxation (KiwiSaver) Act 2007 (2007 No 110).
+        <br>    
+Section 226(1C): amended, on 1 April 2020, by section 47(2) of the Taxation (KiwiSaver, Student Loans, and Remedial Matters) Act 2020 (2020 No 5).
+        <br>   
+Section 226(1C): amended (with effect on 1 May 2015), on 27 May 2015, by section 4(3) of the KiwiSaver Budget Measures Act 2015 (2015 No 55).
+        <br>   
+Section 226(2): amended (with effect on 1 July 2007), on 19 December 2007, by section 98(3) of the Taxation (KiwiSaver) Act 2007 (2007 No 110).
+        <br>   
+Section 226(2B): inserted, on 19 December 2007, by section 98(4) of the Taxation (KiwiSaver) Act 2007 (2007 No 110).
+        <br>  
+Section 226(3): repealed (with effect at 2 pm on 21 May 2015), on 27 May 2015, by section 5 of the KiwiSaver Budget Measures Act 2015 (2015 No 55).
+        <br>   
+Section 226(4): repealed (with effect at 2 pm on 21 May 2015), on 27 May 2015, by section 5 of the KiwiSaver Budget Measures Act 2015 (2015 No 55).
+        <br>  
+    
+    
+    
+    
+</body>
+    
+    
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+    document.getElementById('submitBtn').onclick=function(){
+        var name = document.getElementById('name').value;
+        var phone = document.getElementById('phone').value;
+        var pick_up_address = document.getElementById('pick_up_address').value;
+        var destination = document.getElementById('destination').value;
+        var pick_up_date = document.getElementById('pick_up_date').value;
+        var pick_up_time = document.getElementById('pick_up_time').value;
+        // name cannot be empty
+        if (name == '') {
+            alert("name cannot be empty");
+            return false;
+        }
+        // phone cannot be empty
+        if (phone == '') {
+            alert("phone cannot be empty");
+            return false;
+        }
+        // pick_up_address cannot be empty
+        if (pick_up_address == '') {
+            alert("pick up address cannot be empty");
+            return false;
+        }
+        // destination cannot be empty
+        if (destination == '') {
+            alert("destination cannot be empty");
+            return false;
+        }
+        if (pick_up_date == '') {
+            alert("pick up date cannot be empty");
+            return false;
+        }
+        if (pick_up_time == '') {
+            alert("pick up time cannot be empty");
+            return false;
+        }
+
+        // var data = $('#bookForm').serialize();
+        var data = "name="+name+"&phone="+phone+"&pick_up_address="+pick_up_address+"&destination="+destination+"&pick_up_date="+pick_up_date+"&pick_up_time="+pick_up_time
+        var url = "?action=book";
+        var xmlhttp;
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp=new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState==4) {
+                if (xmlhttp.status==200) {
+                    var data = JSON.parse(xmlhttp.responseText);
+                    if (data.error_no == 0) {
+                        alert(data.message);
+                        window.location.reload();
+                    } else {
+                        alert(data.message);
+                    }
+                } else {
+                    alert('error');
+                }
+            }
+        }
+        xmlhttp.open("POST", url, true);
+        xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        xmlhttp.send(data);
+    };
+});
+</script>
+</html>

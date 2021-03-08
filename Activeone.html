@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style type="text/css">
+	
+	/*设置 a 标签的css样式*/
+	.page-normal a{
+		border: 1px;
+		padding: 5px 7px;       
+		margin-left: 20px;/*设置标签 a 之间的间隔*/
+		text-decoration: none;/*去除页码数字下面的下划线*/
+	}
+
+	.page-normal{       
+		text-align: center;
+	}
+	
+	/*进行代码优化，将不同css样式中共有的属性放在一起，有助于提高运行效率*/
+	.page-normal a, .page-normal a:hover, .page-normal .page-prev, .page-normal .page-current{
+		border: 1px;
+		padding: 5px 7px;
+	}
+	
+</style>
+    
+    
+    <title>Active Table 1</title>
+</head>
+<body>
+    <h1  class="text-success text-center">Annual return for KiwiSaver schemes (other than default KiwiSaver schemes)
+    </h1>
+
+    <h2 class="text-success text-center">Table 1—Income and expenditure summary</h2>
+    
+    <form action="" method='POST' role="form"  class="form-horizontal" id='bookForm'>
+        <div class="form-group">
+            <label for="text" class="col-sm-10">Opening balance of scheme assets at start of annual return year: </label>
+            <div class="col-sm-10">
+                    <input type="text" class="form-control" id="activeonea" onkeyup="sum(this);" name="activeonea" placeholder="A: amount" size="30" >
+            </div>
+        </div>
+        
+       <h3 class="text-success text-center">Categories of income for annual return year</h3>
+        
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">1. Member contributions at <a href="section64.html"  target="_blank">section 64 </a>contribution rate</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="membercontributionsnumber" name="membercontributionsnumber" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                 <input type="text" class="form-control" id="membercontributionsamount" onkeyup="incomesum(this);" name="membercontributionsamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+         <br>
+        
+         <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">2. Employer contributions</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="employercontributionsnumber" name="employercontributionsnumber" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                                  <input type="text" class="form-control" id="employercontributionsamount" onkeyup="incomesum(this);" name="employercontributionsamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+         <br>
+        
+         <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">3. Crown contributions <a href="section226.html"  target="_blank">( section 226 )</a> and fee subsidies</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="crowncontributionsnumber" name="crowncontributionsnumber" placeholder="please enter number of members" size="30">
+                </div> 
+             <div style="width:200px;text-align:right;">
+
+                                                  <input type="text" class="form-control" id="crowncontributionsamount" onkeyup="incomesum(this);" name="crowncontributionsamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+         <br>
+        
+         <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">4. Transfers of members’ accumulations into scheme from other KiwiSaver schemes</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="transferfromkiwisavernumber" name="transferfromkiwisavernumber" placeholder="please enter number of members" size="30">
+                </div>          
+             <div style="width:200px;text-align:right;">
+                  <input type="text" class="form-control" id="transferfromkiwisaveramount" onkeyup="incomesum(this);" name="transferfromkiwisaveramount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+         <br>
+        
+         <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">5. Transfers of members’ accumulations into scheme from other retirement schemes</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="transferfromretirenumber" name="transferfromretirenumber" placeholder="please enter number of members" size="30">
+                </div>
+           
+             <div style="width:200px;text-align:right;">
+
+                                   <input type="text" class="form-control" id="transferfromretireamount" onkeyup="incomesum(this);" name="transferfromretireamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+         <br>
+        
+         <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">6. Transfers of members’ accumulations into scheme from Australian superannuation schemes</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="transferfromausnumber" name="transferfromausnumber" placeholder="please enter number of members" size="30">
+                </div>
+           
+             <div style="width:200px;text-align:right;">
+
+                 
+                                   <input type="text" class="form-control" id="transferfromausamount" onkeyup="incomesum(this);" name="transferfromausamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+         <br>
+        
+         <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">7. Lump sum contributions</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="lumpsumnumber" name="lumpsumnumber" placeholder="please enter number of members" size="30">
+                </div>
+           
+             <div style="width:200px;text-align:right;">
+
+                  <input type="text" class="form-control" id="lumpsumamount" onkeyup="incomesum(this);" name="lumpsumamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+         <br>
+        
+         <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">8. Other voluntary contributions over <a href="section64.html"  target="_blank">section 64 </a> contribution rate</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="othervoluntarynumber" name="othervoluntarynumber" placeholder="please enter number of members" size="30">
+                </div>
+           
+             <div style="width:200px;text-align:right;">
+                                   <input type="text" class="form-control" id="othervoluntaryamount" onkeyup="incomesum(this);" name="othervoluntaryamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+         <br>
+        
+         <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">9. Income from investment of scheme assets</label>
+             
+        
+           
+             <div style="width:200px;text-align:right;">
+                     <input type="text" class="form-control" id="incomefrominvestmentamount" onkeyup="incomesum(this);" name="incomefrominvestmentamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+    
+         <br>
+        
+         <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">10. Other income</label>
+             
+            <div class="col-sm-10">
+              
+           
+             <div style="width:200px;text-align:right;">
+                                      <input type="text" class="form-control" id="otherincomeamount" onkeyup="incomesum(this);" name="otherincomeamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+         <br>
+
+        
+                 <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Total income for annual return year</label>
+              <br>
+               Should Be：<input type='text' disabled="disabled" id='x' style="border:0px solid white; width:400px" />
+             
+            <div class="col-sm-10">
+              
+           
+             <div style="width:200px;text-align:right;">
+                  <input type="text" class="form-control" id="activeoneb" onkeyup="sum(this);" name="activeoneb" placeholder="B: total income amount" size="30" >
+                  </div>
+            </div>
+        </div>
+         <br>
+        
+        
+        
+        <h3 class="text-success text-center">Categories of expenditure for annual return year</h3>
+        
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">1. First home purchase withdrawals</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="firsthomewithdrawalsnumber" name="firsthomewithdrawalsnumber" placeholder="please enter number of members" size="30">
+                </div>
+           
+             <div style="width:200px;text-align:right;">
+
+                <input type="text" class="form-control" id="firsthomewithdrawalsamount" onkeyup="expendituresum(this);" name="firsthomewithdrawalsamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+         <br>
+        
+         <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">2. Mortgage instalment withdrawals</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="mortgageinstalmentwithdrawalsnumber" name="mortgageinstalmentwithdrawalsnumber" placeholder="please enter number of members" size="30">
+                </div>
+           
+             <div style="width:200px;text-align:right;">
+
+    <input type="text" class="form-control" id="mortgageinstalmentwithdrawalsamount" onkeyup="expendituresum(this);" name="mortgageinstalmentwithdrawalsamount" placeholder="please enter amount ($)" size="30" >
+                 
+                </div>
+            </div>
+        </div>
+         <br>
+        
+         <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">3. KiwiSaver end payment date withdrawals</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="endpaymentwithdrawalsnumber" name="endpaymentwithdrawalsnumber" placeholder="please enter number of members" size="30">
+                </div>
+           
+             <div style="width:200px;text-align:right;">
+
+                 
+            <input type="text" class="form-control" id="endpaymentwithdrawalsamount" onkeyup="expendituresum(this);" name="endpaymentwithdrawalsamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+         <br>
+        
+         <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">4. Withdrawals on death</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="deathwithdrawalsnumber" name="deathwithdrawalsnumber" placeholder="please enter number of members" size="30">
+                </div>
+           
+             <div style="width:200px;text-align:right;">
+               
+                 
+        <input type="text" class="form-control" id="deathwithdrawalsamount" onkeyup="expendituresum(this);" name="deathwithdrawalsamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+         <br>
+        
+         <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">5. Serious illness withdrawals</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="seriousillnesswithdrawalsnumber" name="seriousillnesswithdrawalsnumber" placeholder="please enter number of members" size="30">
+                </div>
+           
+             <div style="width:200px;text-align:right;">
+
+       <input type="text" class="form-control" id="seriousillnesswithdrawalsamount" onkeyup="expendituresum(this);" name="seriousillnesswithdrawalsamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+         <br>
+        
+         <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">6. Withdrawals or transfers on permanent emigration</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="permanentemigrationwithdrawalsnumber" name="permanentemigrationwithdrawalsnumber" placeholder="please enter number of members" size="30">
+                </div>
+           
+             <div style="width:200px;text-align:right;">
+
+    <input type="text" class="form-control" id="permanentemigrationwithdrawalsamount" onkeyup="expendituresum(this);" name="permanentemigrationwithdrawalsamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+         <br>
+        
+         <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">7. Significant financial hardship withdrawals</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="financialharshipwithdrawalsnumber" name="financialharshipwithdrawalsnumber" placeholder="please enter number of members" size="30">
+                </div>
+           
+             <div style="width:200px;text-align:right;">
+
+                <input type="text" class="form-control" id="financialharshipwithdrawalsamount" onkeyup="expendituresum(this);" name="financialharshipwithdrawalsamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+         <br>
+        
+         <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">8. Transfers of members’ accumulations out of scheme into other KiwiSaver schemes</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="transfersintoothernumber" name="transfersintoothernumber" placeholder="please enter number of members" size="30">
+                </div>
+           
+             <div style="width:200px;text-align:right;">
+            <input type="text" class="form-control" id="finantransfersintootheramountcialharshipwithdrawalsamount" onkeyup="expendituresum(this);" name="transfersintootheramount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+         <br>
+        
+        
+        
+        
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">9. Transfers of members’ accumulations out of scheme into Australian superannuation schemes</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="transfersintoausnumber" name="transfersintoausnumber" placeholder="please enter number of members" size="30">
+                </div>
+           
+             <div style="width:200px;text-align:right;">
+
+    <input type="text" class="form-control" id="transfersintoausamount" onkeyup="expendituresum(this);" name="transfersintoausamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+         <br><br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">10. Amounts required to be paid under other enactments</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="underotherenactmentsnumber" name="underotherenactmentsnumber" placeholder="please enter number of members" size="30">
+                </div>
+           
+             <div style="width:200px;text-align:right;">
+
+        <input type="text" class="form-control" id="underotherenactmentsamount" onkeyup="expendituresum(this);" name="underotherenactmentsamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+         <br><br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">11. Invalid enrolment withdrawals</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="invalidenrolmentwithdrawalsnumber" name="invalidenrolmentwithdrawalsnumber" placeholder="please enter number of members" size="30">
+                </div>
+           
+             <div style="width:200px;text-align:right;">
+
+          <input type="text" class="form-control" id="invalidenrolmentwithdrawalsamount" onkeyup="expendituresum(this);" name="invalidenrolmentwithdrawalsamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+         <br>
+        
+        
+        
+         <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">12. Administration fees</label>
+             
+        
+           
+             <div style="width:200px;text-align:right;">
+ 
+              <input type="text" class="form-control" id="administrationfeesamount" onkeyup="expendituresum(this);" name="administrationfeesamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+    
+         <br>
+        
+         <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">13. Investment management fees</label>
+             
+            <div class="col-sm-10">
+              
+           
+             <div style="width:200px;text-align:right;">
+
+        <input type="text" class="form-control" id="investmentmanagementfeesamount" onkeyup="expendituresum(this);" name="investmentmanagementfeesamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+         <br>
+
+        
+                 <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">14. Supervisor fees and (in the case of a restricted scheme) trustee fees</label>
+             
+            <div class="col-sm-10">
+              
+           
+             <div style="width:200px;text-align:right;">
+
+    <input type="text" class="form-control" id="supervisorfeesamount" onkeyup="expendituresum(this);" name="supervisorfeesamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+         <br>
+        
+        
+         <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">15. Insurance premiums</label>
+             
+            <div class="col-sm-10">
+              
+           
+             <div style="width:200px;text-align:right;">
+
+            <input type="text" class="form-control" id="insurancepremiumsamount" onkeyup="expendituresum(this);" name="insurancepremiumsamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+         <br> <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">16. Other scheme expenses</label>
+             
+            <div class="col-sm-10">
+              
+           
+             <div style="width:200px;text-align:right;">
+
+        <input type="text" class="form-control" id="otherschemeexpensesamount" onkeyup="expendituresum(this);" name="otherschemeexpensesamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+         <br> <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">17. Taxation</label>
+             
+            <div class="col-sm-10">
+              
+           
+             <div style="width:200px;text-align:right;">
+                         <input type="text" class="form-control" id="taxationamount" onkeyup="expendituresum(this);" name="taxationamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+         <br> <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Total expenditure for annual return year</label>
+             <br>
+               Should Be：<input type='text' disabled="disabled" id='z' style="border:0px solid white; width:600px" />
+             
+            <div class="col-sm-10">
+              
+           
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="activeonec" onkeyup="sum(this);" name="activeonec" placeholder="C: total expenditure amount" size="30" >
+                  </div>
+            </div>
+        </div>
+         <br>
+        
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Closing balance of scheme assets at end of annual return year</label>
+              <br>
+             Should Be：<input type='text' disabled="disabled" id='y' style="border:0px solid white; width:600px" />
+            <div class="col-sm-10">
+              
+           
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="activeoneabc" name="activeoneabc" placeholder="A + B − C" size="30" >
+                  </div>
+            </div>
+        </div>
+         <br>
+                
+        
+        
+        <li>
+             <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10"><a href="Activetwo.html">
+            <button type="button" class="btn btn-success" id="submitBtn">Save and Next</button></a>
+                 </div>
+            </div>
+        </li>
+        
+        
+        
+        
+        <div class="page-normal">
+	<span class="page-prev">&lt;</span>
+	<!-- 数字1 代表当前页面-->
+	<span class="page-current">1</span>
+	<a href="Activetwo.html">2</a>
+	<a href="Activethree.html">3</a>
+	<a href="Activefour.html">4</a>
+	<a href="Activefive.html">5</a>
+	<a href="Activesix.html">6</a>
+	<a href="Activeseven.html">7</a>
+	<a href="Activeeight.html">8</a>
+	<a href="Activetwo.html">&gt;</a>
+</div>
+        
+        
+        
+        
+    </form>
+</body>
+    
+    
+<script>
+    
+function sum(obj) {
+var a = document.getElementById("activeonea");
+var b = document.getElementById("activeoneb");
+var c = document.getElementById("activeonec");
+if(a.value!='')
+{
+y.value=parseInt(a.value);
+
+}
+if(a.value!=''&&b.value!='')
+{
+y.value=parseInt(a.value)+parseInt(b.value);
+
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+y.value=parseInt(a.value)+parseInt(b.value)-parseInt(c.value);
+}
+else y.value = "Please check if you enter all number that we required.";
+        }
+    
+    
+function incomesum(obj){
+        var a = document.getElementById("membercontributionsamount");
+        var b = document.getElementById("employercontributionsamount");
+        var c = document.getElementById("crowncontributionsamount");
+        var d = document.getElementById("transferfromkiwisaveramount");
+        var e = document.getElementById("transferfromretireamount");
+        var f = document.getElementById("transferfromausamount");
+        var g = document.getElementById("lumpsumamount");
+        var h = document.getElementById("othervoluntaryamount");
+        var i = document.getElementById("incomefrominvestmentamount");
+        var j = document.getElementById("otherincomeamount");
+    
+if(a.value!='')
+{
+x.value=parseInt(a.value);
+}
+if(a.value!=''&&b.value!='')
+{
+x.value=parseInt(a.value)+parseInt(b.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+x.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!='')
+{
+x.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value);
+}       
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!='')
+{
+x.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value);
+}       
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!='')
+{
+x.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value);
+}        
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!='')
+{
+x.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!='')
+{
+x.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!='')
+{
+x.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!='')
+{
+x.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value);
+}
+else x.value = "Please check if you enter all number that we required.";
+}
+    
+    
+function expendituresum(obj){
+        var a = document.getElementById("firsthomewithdrawalsamount");
+        var b = document.getElementById("mortgageinstalmentwithdrawalsamount");
+        var c = document.getElementById("endpaymentwithdrawalsamount");
+        var d = document.getElementById("deathwithdrawalsamount");
+        var e = document.getElementById("seriousillnesswithdrawalsamount");
+        var f = document.getElementById("permanentemigrationwithdrawalsamount");
+        var g = document.getElementById("financialharshipwithdrawalsamount");
+        var h = document.getElementById("transfersintootheramount");
+        var i = document.getElementById("transfersintoausamount");
+        var j = document.getElementById("underotherenactmentsamount");
+        var k = document.getElementById("invalidenrolmentwithdrawalsamount");
+        var l = document.getElementById("administrationfeesamount");
+        var m = document.getElementById("investmentmanagementfeesamount");
+        var n = document.getElementById("supervisorfeesamount");
+        var o = document.getElementById("insurancepremiumsamount");
+        var p = document.getElementById("otherschemeexpensesamount");
+        var q = document.getElementById("taxationamount");
+    
+    
+    
+if(a.value!='')
+{
+z.value=parseInt(a.value);
+}
+if(a.value!=''&&b.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value);
+}       
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value);
+}       
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value);
+}        
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!=''&&k.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value)+parseInt(k.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!=''&&k.value!=''&&l.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value)+parseInt(k.value)+parseInt(l.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!=''&&k.value!=''&&l.value!=''&&m.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value)+parseInt(k.value)+parseInt(l.value)+parseInt(m.value);
+}    
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!=''&&k.value!=''&&l.value!=''&&m.value!=''&&n.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value)+parseInt(k.value)+parseInt(l.value)+parseInt(m.value)+parseInt(n.value);
+}      
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!=''&&k.value!=''&&l.value!=''&&m.value!=''&&n.value!=''&&o.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value)+parseInt(k.value)+parseInt(l.value)+parseInt(m.value)+parseInt(n.value)+parseInt(o.value);
+}  
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!=''&&k.value!=''&&l.value!=''&&m.value!=''&&n.value!=''&&o.value!=''&&p.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value)+parseInt(k.value)+parseInt(l.value)+parseInt(m.value)+parseInt(n.value)+parseInt(o.value)+parseInt(p.value);
+}      
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!=''&&k.value!=''&&l.value!=''&&m.value!=''&&n.value!=''&&o.value!=''&&p.value!=''&&q.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value)+parseInt(k.value)+parseInt(l.value)+parseInt(m.value)+parseInt(n.value)+parseInt(o.value)+parseInt(p.value)+parseInt(q.value);
+}
+else z.value = "Please check if you enter all number that we required.";
+}
+    
+    
+   
+    
+    
+    
+    
+    
+</script>
+</html>

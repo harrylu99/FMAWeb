@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <style type="text/css">
+	
+	/*设置 a 标签的css样式*/
+	.page-normal a{
+		border: 1px;
+		padding: 5px 7px;       
+		margin-left: 20px;/*设置标签 a 之间的间隔*/
+		text-decoration: none;/*去除页码数字下面的下划线*/
+	}
+
+	.page-normal{       
+		text-align: center;
+	}
+	
+	/*进行代码优化，将不同css样式中共有的属性放在一起，有助于提高运行效率*/
+	.page-normal a, .page-normal a:hover, .page-normal .page-prev, .page-normal .page-current{
+		border: 1px;
+		padding: 5px 7px;
+	}
+	
+</style>
+    
+    
+    <title>Active Table 7</title>
+</head>
+<body>
+    <h1  class="text-success text-center">Annual return for KiwiSaver schemes (other than default KiwiSaver schemes)
+    </h1>
+    <h2 class="text-success text-center">Table 7—Switches between investment funds</h2>
+    
+    <form action="" method='POST' role="form"  class="form-horizontal" id='bookForm'>
+        
+        
+        
+        <h4 class="text-success text-center">Investment funds 1: Conservative</h4>
+  
+        
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Switches into investment funds in annual return year</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="oneintonumber" name="oneintonumber" placeholder="please enter number of switches" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="oneintoamount" onkeyup="onesum(this);" name="oneintoamount" placeholder="please enter A: amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="text" class="col-sm-10">Switches out of investment funds in annual return year</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="oneoutnumber" name="oneoutnumber" placeholder="please enter number of switches" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="oneoutamount" onkeyup="onesum(this);" name="oneoutamount" placeholder="please enter B: amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="text" class="col-sm-10">Net change in amounts ($)</label>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="onenetchange" name="onenetchange" placeholder="please enter A - B : net change in amounts ($)" size="40">
+                </div>
+        </div>
+               Should Be：<input type='text' disabled="disabled" id='one' style="border:0px solid white; width:400px" />
+        </div>
+         <br>
+        
+         
+        
+        
+        
+        
+
+        
+                
+        
+        
+        <h4 class="text-success text-center">Investment funds 2: Balances</h4>
+  
+        
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Switches into investment funds in annual return year</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="twointonumber" name="twointonumber" placeholder="please enter number of switches" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="twointoamount" onkeyup="twosum(this);" name="twointoamount" placeholder="please enter A: amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="text" class="col-sm-10">Switches out of investment funds in annual return year</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="twooutnumber" name="twooutnumber" placeholder="please enter number of switches" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="twooutamount" onkeyup="twosum(this);" name="twooutamount" placeholder="please enter B: amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="text" class="col-sm-10">Net change in amounts ($)</label>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="twonetchange" name="twonetchange" placeholder="please enter A - B : net change in amounts ($)" size="40">
+                </div>
+        </div>
+            Should Be：<input type='text' disabled="disabled" id='two' style="border:0px solid white; width:400px" />
+        </div>
+         <br>
+        
+         
+        
+        
+        
+        
+        
+        
+                
+        
+        
+        <h4 class="text-success text-center">Investment funds 3: Growth</h4>
+  
+        
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Switches into investment funds in annual return year</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="threeintonumber" name="threeintonumber" placeholder="please enter number of switches" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="threeintoamount" onkeyup="threesum(this);" name="threeintoamount" placeholder="please enter A: amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="text" class="col-sm-10">Switches out of investment funds in annual return year</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="threeoutnumber" name="threeoutnumber" placeholder="please enter number of switches" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="threeoutamount" onkeyup="threesum(this);" name="threeoutamount" placeholder="please enter B: amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="text" class="col-sm-10">Net change in amounts ($)</label>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="threenetchange" name="threenetchange" placeholder="please enter A - B : net change in amounts ($)" size="40">
+                </div>
+        </div>
+            Should Be：<input type='text' disabled="disabled" id='three' style="border:0px solid white; width:400px" />
+        </div>
+         <br>
+        
+         
+        
+        
+        
+        
+        
+        
+        
+                
+        
+        
+        <h4 class="text-success text-center">Investment funds 4: Single sector funds ([insert relevant sector])</h4>
+  
+        
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Switches into investment funds in annual return year</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="fourintonumber" name="fourintonumber" placeholder="please enter number of switches" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="fourintoamount" onkeyup="foursum(this);" name="fourintoamount" placeholder="please enter A: amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="text" class="col-sm-10">Switches out of investment funds in annual return year</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="fouroutnumber" name="fouroutnumber" placeholder="please enter number of switches" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="fouroutamount" onkeyup="foursum(this);" name="fouroutamount" placeholder="please enter B: amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="text" class="col-sm-10">Net change in amounts ($)</label>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="fournetchange" name="fournetchange" placeholder="please enter A - B : net change in amounts ($)" size="40">
+                </div>
+        </div>
+            Should Be：<input type='text' disabled="disabled" id='four' style="border:0px solid white; width:400px" />
+        </div>
+         <br>
+        
+         
+        
+        
+        
+        
+        
+        
+        
+                
+        
+        
+        <h4 class="text-success text-center">[List any other investment funds available]</h4>
+  
+        
+        
+        <div class="ibox-content col-md-12" style="padding-top: 0px; border: 0px; height: 100%; width: 100%">
+	<table class="table" id="filedTable">
+	    <tr>
+		<td width="30" align="center" bgcolor="#EFEFEF" Name="check">Select
+		    
+		</td>
+		<td width="300"  Name="fundname"EditType="TextBox">Name of the fund</td>
+		<td width="300" bgcolor="#EFEFEF" Name="numberinto" EditType="TextBox">The number of switches into investment funds</td>
+		<td width="300"  Name="amountinto" onkeyup="sum(this);" EditType="TextBox">The amount of switches into investment funds($)</td>
+		<td width="300" bgcolor="#EFEFEF" Name="numberout" EditType="TextBox">The number of switches out of investment funds</td>
+		<td width="300"  Name="amountout" onkeyup="sum(this);" EditType="TextBox">The amount of switches out of investment funds($)</td>
+        <td width="300" bgcolor="#EFEFEF" Name="netchange" EditType="TextBox">Net change in amounts($)</td>  
+	    </tr>
+            <br>
+       
+	</table>
+        <br />
+        <input type="button" name="Submit" value="Add new" onclick="AddRow(document.getElementById('filedTable'))" />
+	<input type="button" name="Submit2" value="Delete" onclick="DeleteRow(document.getElementById('filedTable'))" />
+        </div>
+        
+        
+        
+    
+        
+     
+        
+                
+        
+        
+        <h4 class="text-success text-center">Totals of switches between investment funds</h4>
+  
+        
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Switches into investment funds in annual return year</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="totalintonumber" name="totalintonumber" placeholder="please enter total number of switches" size="40">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="totalintoamount" onkeyup="totalsum(this);" name="totalintoamount" placeholder="please enter A: total amount ($)" size="40" >
+                  </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="text" class="col-sm-10">Switches out of investment funds in annual return year</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="totaloutnumber" name="totaloutnumber" placeholder="please enter total number of switches" size="40">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="totaloutamount" onkeyup="totalsum(this);" name="totaloutamount" placeholder="please enter B: total amount ($)" size="40" >
+                  </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="text" class="col-sm-10">Net change in amounts ($)</label>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="totalnetchange" name="totalnetchange" placeholder="please enter A - B : net change in amounts ($)" size="40">
+                </div>
+        </div>
+            Should Be：<input type='text' disabled="disabled" id='total' style="border:0px solid white; width:400px" />
+        </div>
+         <br>
+        
+         
+        
+        
+        
+        
+        
+        <li>
+             <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10"><a href="Activeeight.html">
+            <button type="button" class="btn btn-success" id="submitBtn">Save and Next</button></a>
+                 </div>
+            </div>
+        </li>
+        
+                
+    <div class="page-normal">
+	<a href="Activesix.html">&lt;</a>
+	<a href="Activeone.html">1</a>
+    <a href="Activetwo.html">2</a> 
+    <a href="Activethree.html">3</a>
+    <a href="Activefour.html">4</a>
+    <a href="Activefive.html">5</a>
+    <a href="Activesix.html">6</a>
+	<span class="page-current">7</span>
+	<a href="Activeeight.html">8</a>
+	<a href="Activeeight.html">&gt;</a>
+</div>
+        
+        
+        
+    </form>
+</body>
+    
+    
+<script>
+
+    
+function onesum(obj) {
+var a = document.getElementById("oneintoamount");
+var b = document.getElementById("oneoutamount");
+if(a.value!='')
+{
+one.value=parseInt(a.value);
+
+}
+if(a.value!=''&&b.value!='')
+{
+one.value=parseInt(a.value)-parseInt(b.value);
+
+}
+else one.value = "Please check if you enter all number that we required.";
+        }
+    
+    
+    
+    
+function twosum(obj) {
+var a = document.getElementById("twointoamount");
+var b = document.getElementById("twooutamount");
+if(a.value!='')
+{
+two.value=parseInt(a.value);
+
+}
+if(a.value!=''&&b.value!='')
+{
+two.value=parseInt(a.value)-parseInt(b.value);
+
+}
+else two.value = "Please check if you enter all number that we required.";
+        }
+
+    function threesum(obj) {
+var a = document.getElementById("threeintoamount");
+var b = document.getElementById("threeoutamount");
+if(a.value!='')
+{
+three.value=parseInt(a.value);
+
+}
+if(a.value!=''&&b.value!='')
+{
+three.value=parseInt(a.value)-parseInt(b.value);
+
+}
+else three.value = "Please check if you enter all number that we required.";
+        }
+    
+    
+    function foursum(obj) {
+var a = document.getElementById("fourintoamount");
+var b = document.getElementById("fouroutamount");
+if(a.value!='')
+{
+four.value=parseInt(a.value);
+
+}
+if(a.value!=''&&b.value!='')
+{
+four.value=parseInt(a.value)-parseInt(b.value);
+
+}
+else four.value = "Please check if you enter all number that we required.";
+        }
+    
+    function totalsum(obj) {
+var a = document.getElementById("totalintoamount");
+var b = document.getElementById("totaloutamount");
+if(a.value!='')
+{
+total.value=parseInt(a.value);
+
+}
+if(a.value!=''&&b.value!='')
+{
+total.value=parseInt(a.value)-parseInt(b.value);
+
+}
+else total.value = "Please check if you enter all number that we required.";
+        }
+    
+    
+    
+    
+    
+    
+         
+    //表格添加行    
+	function AddRow(table) {
+	    var lastRow = table.rows[table.rows.length - 1];
+	    var newRow = lastRow.cloneNode(true);  
+	    var length = table.rows.length; 
+	    table.tBodies[0].appendChild(newRow);
+	    newRow.cells[0].innerHTML = "<input type=\"checkbox\" name=\"checkbox\" value=\"checkbox\">"; 
+	    newRow.cells[0].setAttribute("id","new");
+	    newRow.cells[1].innerHTML = "enter the name" 
+	    newRow.cells[2].innerHTML = "enter the number" 
+		newRow.cells[3].innerHTML = "enter the amount"
+		newRow.cells[4].innerHTML = "enter the number"
+	    newRow.cells[5].innerHTML = "enter the amount"
+		newRow.cells[6].innerHTML = "caculate"
+		//根据行号奇偶设置不同背景色
+		if(length%2 == 1){
+			newRow.cells[0].setAttribute("bgcolor","#FFFFFF");
+			newRow.cells[1].setAttribute("bgcolor","#FFFFFF");
+			newRow.cells[2].setAttribute("bgcolor","#FFFFFF");
+			newRow.cells[3].setAttribute("bgcolor","#FFFFFF"); 
+			newRow.cells[4].setAttribute("bgcolor","#FFFFFF");
+			newRow.cells[5].setAttribute("bgcolor","#FFFFFF");
+			newRow.cells[6].setAttribute("bgcolor","#FFFFFF");  
+		}else{
+			newRow.cells[0].setAttribute("bgcolor","#f2fbff");
+			newRow.cells[1].setAttribute("bgcolor","#f2fbff");
+			newRow.cells[2].setAttribute("bgcolor","#f2fbff");
+			newRow.cells[3].setAttribute("bgcolor","#f2fbff");
+			newRow.cells[4].setAttribute("bgcolor","#f2fbff");
+			newRow.cells[5].setAttribute("bgcolor","#f2fbff");
+			newRow.cells[6].setAttribute("bgcolor","#f2fbff");
+		}
+            //设置表格行可编辑
+	    SetRowCanEdit(newRow);
+	    return newRow;
+	
+	}
+    
+
+        //设置表格行可编辑
+    function SetRowCanEdit(row) { 
+        for (var i = 0; i < row.cells.length; i++) { 
+            //当前单元格指定了编辑类型，允许编辑 
+            var editType = row.cells[i].getAttribute("EditType"); if (!editType) { 
+            //当前单元格没有指定，查看当前列是否指定 
+            editType = row.parentNode.rows[0].cells[i].getAttribute("EditType"); } 
+            if (editType) { 
+                row.cells[i].onclick = function() { EditCell(this); }
+             } 
+        }
+    
+    }
+    
+
+    //设置指定单元格可编辑
+    function EditCell(element, editType) { 
+        var editType = element.getAttribute("EditType"); 
+        if (!editType) { 
+            //如果当前单元格没有指定，则查看当前列是否指定 
+            editType = element.parentNode.parentNode.rows[0].cells[element.cellIndex].getAttribute("EditType"); 
+        } 
+        switch (editType) { 
+            case "TextBox":
+                CreateTextBox(element, element.innerHTML); 
+                break; 
+            case "DropDownList": 
+                CreateDropDownList(element); 
+                break; default: break; 
+         }
+     }
+    
+    
+    
+
+    //为单元格创建可编辑输入框 
+    function CreateTextBox(element, value) { 
+        //编辑状态，true为编辑状态 
+        var editState = element.getAttribute("EditState"); 
+        if (editState != "true") { 
+            //创建文本框 
+            var textBox = document.createElement("INPUT"); 
+            textBox.style="width:100%"; 
+            textBox.type = "text"; 
+            textBox.className = "EditCell_TextBox"; 
+            //设置当前值 
+            if (!value) { 
+                value = element.getAttribute("Value"); 
+            } textBox.value = value; 
+            //设置失去焦点事件 
+            textBox.onblur = function() {CancelEditCell(this.parentNode, this.value); } 
+            //向当前单元格添加文本框 
+            ClearChild(element); 
+            element.appendChild(textBox); 
+            textBox.focus(); textBox.select(); 
+            //设置编辑状态 
+            element.setAttribute("EditState", "true"); 
+            element.parentNode.parentNode.setAttribute("CurrentRow", element.parentNode.rowIndex); }
+    }
+    
+    
+
+    //为单元格创建选择框 
+    function CreateDropDownList(element, value) { 
+        //编辑状态， true为编辑状态 
+        var editState = element.getAttribute("EditState"); 
+        if (editState != "true") { 
+            //创建下拉框 
+            var downList = document.createElement("Select"); 
+            downList.style="width:100%"; 
+            downList.className = "EditCell_DropDownList"; 
+            //添加列表项 
+            var items = element.getAttribute("DataItems"); 
+            if (!items) { 
+                items = element.parentNode.parentNode.rows[0].cells[element.cellIndex].getAttribute("DataItems");
+            } 
+            if (items) { 
+                items = eval("[" + items + "]"); 
+                for (var i = 0; i < items.length; i++) { 
+                    var oOption = document.createElement("OPTION"); 
+                    oOption.text = items[i].text; 
+                    oOption.value = items[i].value; downList.options.add(oOption); 
+                } 
+            } 
+            //设置列表当前值 
+            if (!value) { 
+                value = element.getAttribute("Value"); 
+            } downList.value = value; 
+            //设置下拉框失去焦点事件 
+            downList.onblur = function() { 
+                CancelEditCell(this.parentNode, this.value, this.options[this.selectedIndex].text); 
+            } 
+            //向当前单元格添加下拉框 
+            ClearChild(element); 
+            element.appendChild(downList); 
+            downList.focus(); 
+            //设置编辑状态 
+            element.setAttribute("EditState", "true"); 
+            element.parentNode.parentNode.setAttribute("LastEditRow", element.parentNode.rowIndex); 
+        }
+    }
+    //取消单元格编辑状态 
+    function CancelEditCell(element, value, text) { 
+        element.setAttribute("Value", value); 
+        if (text) { 
+            element.innerHTML = text; 
+        } else { 
+            element.innerHTML = value; 
+        } element.setAttribute("EditState", "false"); 
+    }
+    //清空指定对象的所有字节点 
+    function ClearChild(element) { 
+        element.innerHTML = "";
+    }
+    //删除行 
+    function DeleteRow(table) { 
+        for (var i = table.rows.length - 1; i > 0; i--) { 
+            var chkOrder = table.rows[i].cells[0].firstChild; 
+            if (chkOrder) { 
+                if (chkOrder.type = "CHECKBOX") { 
+                    if (chkOrder.checked) { 
+                        table.deleteRow(i); 
+                    } 
+                } 
+            } 
+        }
+    }
+        
+        
+        
+    //提取表格所有值,JSON格式，可以将该值赋予一个隐藏的input标签，提交表单至后台进行处理 
+    function GetTableData() {    
+        var table = document.getElementById("filedTable");     
+        var Obj = {Mark:"",fundname:"",numberinto:"",amountinto:"",numberout:"",amountout:"",netchange:""};      
+        var datamodeldata = JSON.parse("{\"data\":[]}");      
+        for(var i=1;i<table.rows.length;i++){ 
+            var Obj = new Object(); 
+            Obj.Mark = table.rows[i].cells[0].id; 
+            Obj.fundname = table.rows[i].cells[1].innerHTML; 
+            Obj.numberinto = table.rows[i].cells[2].innerHTML; 
+            Obj.amountinto = table.rows[i].cells[3].innerHTML; 
+            Obj.numberout = table.rows[i].cells[4].innerHTML; 
+            Obj.amountout = table.rows[i].cells[5].innerHTML; 
+            Obj.netchange = table.rows[i].cells[6].innerHTML; 
+            datamodeldata.data.push(Obj);     
+        }     
+        return JSON.stringify(datamodeldata).toString();
+    }     
+        
+        
+    //本表格数据为数据库字段数据
+    //判断字段名称是否重复
+    function ColumnnameDuplicate(){
+        var table = document.getElementById("filedTable"); 
+        var array = new Array();
+        var b = false; 
+        for(var i=1;i<table.rows.length;i++){ 
+            array.push(table.rows[i].cells[1].innerHTML); 
+        } 
+        var nary=array.sort(); 
+        for(var i=0;i<array.length;i++){ 
+            if (nary[i]==nary[i+1]){ 
+                b = true; 
+            } 
+        } 
+        return b;
+    }
+        
+        
+    //提交表格时，判断是否存在数据行
+    function TableRows(){
+        var table = document.getElementById("filedTable");
+        var length = table.rows.length;
+        var b = false;
+        if(length>=2){
+            b=true;
+        }
+        return b;
+    }
+        
+        
+    //判断字段名称是否为空
+    function ColumunameIsnull(){
+        var table = document.getElementById("filedTable"); 
+        var b = false; 
+        for(var i=1;i<table.rows.length;i++){ 
+            if(table.rows[i].cells[1].innerHTML==""){ 
+                b = true; 
+            } 
+        } 
+        return b;
+    }
+    
+    
+    
+    
+    
+</script>
+</html>

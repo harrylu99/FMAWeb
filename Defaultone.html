@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <style type="text/css">
+	
+	/*设置 a 标签的css样式*/
+	.page-normal a{
+		border: 1px;
+		padding: 5px 7px;       
+		margin-left: 20px;/*设置标签 a 之间的间隔*/
+		text-decoration: none;/*去除页码数字下面的下划线*/
+	}
+
+	.page-normal{       
+		text-align: center;
+	}
+	
+	/*进行代码优化，将不同css样式中共有的属性放在一起，有助于提高运行效率*/
+	.page-normal a, .page-normal a:hover, .page-normal .page-prev, .page-normal .page-current{
+		border: 1px;
+		padding: 5px 7px;
+	}
+	
+</style>
+    
+    <title>Default Table 1</title>
+</head>
+<body>
+    <h1  class="text-success text-center">Annual return for default KiwiSaver schemes
+    </h1>
+    <h2 class="text-success text-center">Table 1—Income and expenditure summary</h2>
+    
+    <form action="" method='POST' role="form"  class="form-horizontal" id='bookForm'>
+        <div class="form-group">
+            <label for="text" class="col-sm-10">Opening balance of scheme assets at start of annual return year </label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="defaultonea" onkeyup="defaultsum(this);" name="defaultonea" placeholder="A: total amount ($) of default members" size="40">
+            </div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="defaultoneatwo" onkeyup="othersum(this);"  name="defaultoneatwo" placeholder="A2: total amount ($) of other members of scheme" size="40">
+            </div>
+        </div>
+        
+
+
+        
+       <h3 class="text-success text-center">Categories of income for annual return year</h3>
+        
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">1. Member contributions at <a href="section64.html"  target="_blank">section 64</a> contribution rate</label>
+             <h5 class="text-success text-center">Default members
+                </h5>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="demembercontributionnum" name="demembercontributionnum" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="demembercontributionamount"         onkeyup="defaultincomesum(this);" name="demembercontributionamount" placeholder="please enter amount ($) for example: $4,000 " size="40" >
+                  </div>
+            
+            </div>
+              
+              <h5 class="text-success text-center">Other members of scheme
+                </h5>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="omembercontributionnum" name="omembercontributionnum" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="omembercontributionamount"         onkeyup="otherincomesum(this);" name="omembercontributionamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+        
+         <br>
+        
+        
+        
+        
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">2. Employer contributions</label>
+             <h5 class="text-success text-center">Default members
+                </h5>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="deemployernum" name="deemployernum" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="deemployeramount" onkeyup="defaultincomesum(this);" name="deemployeramount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+              
+              <h5 class="text-success text-center">Other members of scheme
+                </h5>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="oemplyernum" name="oemplyernum" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="oemployeramount" onkeyup="otherincomesum(this);" name="oemployeramount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+        
+         <br>
+        
+        
+        
+        
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">3. Crown contributions (<a href="section104.html"  target="_blank">section 226</a>) and fee subsidies</label>
+             <h5 class="text-success text-center">Default members
+                </h5>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="decrowncontributionnum" name="decrowncontributionnum" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="decrowncontributionamount" onkeyup="otherincomesum(this);" name="decrowncontributionamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+              
+              
+              <h5 class="text-success text-center">Other members of scheme
+                </h5>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="ocrowncontributionnum" name="ocrowncontributionnum" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="ocrowncontributionamount" onkeyup="otherincomesum(this);" name="ocrowncontributionamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+        
+         <br>
+        
+        
+        
+        
+        
+        
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">4. Transfers of members’ accumulations into scheme from other KiwiSaver schemes </label>
+             (other members of scheme)
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="transfromotherkiwisavernum" name="transfromotherkiwisavernum" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="transfromotherkiwisaveramount" onkeyup="otherincomesum(this);" name="transfromotherkiwisaveramount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+        
+         <br>
+        
+        
+        
+        
+        
+        
+        
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">5. Transfers of members’ accumulations into scheme from other retirement schemes</label>
+             <h5 class="text-success text-center">Default members
+                </h5>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="detransfromretirementnum" name="detransfromretirementnum" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="detransfromretirementamount" onkeyup="defaultincomesum(this);" name="detransfromretirementamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+              
+              <h5 class="text-success text-center">Other members of scheme
+                </h5>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="otransfromretirementnum" name="otransfromretirementnum" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="otransfromretirementamount" onkeyup="otherincomesum(this);" name="otransfromretirementamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+        
+         <br>
+        
+        
+           
+        
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">6. Transfers of members’ accumulations into scheme from Australian superannuation schemes</label>
+             <h5 class="text-success text-center">Default members
+                </h5>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="detransfromaunum" name="detransfromaunum" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="detransfromauamount" onkeyup="defaultincomesum(this);" name="detransfromauamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+              
+              <h5 class="text-success text-center">Other members of scheme
+                </h5>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="otransfromaunum" name="otransfromaunum" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="otransfromauamount" onkeyup="otherincomesum(this);" name="otransfromauamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+        
+         <br>
+        
+        
+        
+     
+        
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">7. Lump sum contributions</label>
+             <h5 class="text-success text-center">Default members
+                </h5>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="delumpsumcontributionnum" name="delumpsumcontributionnum" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="delumpsumcontributionamount" onkeyup="defaultincomesum(this);" name="delumpsumcontributionamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+              
+              <h5 class="text-success text-center">Other members of scheme
+                </h5>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="olumpsumcontributionnum" name="olumpsumcontributionnum" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="olumpsumcontributionamount" onkeyup="otherincomesum(this);" name="olumpsumcontributionamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+        
+         <br>
+        
+        
+        
+        
+        
+        
+        
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">8. Other voluntary contributions over <a href="section64.html"  target="_blank">section 64</a> contribution rate	</label>
+             <h5 class="text-success text-center">Default members
+                </h5>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="deothercontributionoversixfournum" name="deothercontributionoversixfournum" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="deothercontributionoversixfouramount" onkeyup="defaultincomesum(this);" name="deothercontributionoversixfouramount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+              
+              <h5 class="text-success text-center">Other members of scheme
+                </h5>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="oothercontributionoversixfournum" name="oothercontributionoversixfournum" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="oothercontributionoversixfouramount" onkeyup="otherincomesum(this);" name="oothercontributionoversixfouramount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+        
+         <br>
+        
+        
+        
+        
+        
+        
+        
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">9. Income from investment of scheme assets</label>
+             <h5 class="text-success text-center">Default members
+                </h5>
+            <div class="col-sm-10">
+               
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="deincomefrominvestment" onkeyup="defaultincomesum(this);" name="deincomefrominvestment" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+              
+              <h5 class="text-success text-center">Other members of scheme
+                </h5>
+            <div class="col-sm-10">
+          
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="oincomefrominvestment" onkeyup="otherincomesum(this);" name="oincomefrominvestment" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+        
+         <br>
+        
+        
+        
+                   
+        
+        
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">10. Other income</label>
+             <h5 class="text-success text-center">Default members
+                </h5>
+            <div class="col-sm-10">
+               
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="deotherincome" onkeyup="defaultincomesum(this);" name="deotherincome" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+              
+              <h5 class="text-success text-center">Other members of scheme
+                </h5>
+            <div class="col-sm-10">
+          
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="ootherincome" onkeyup="otherincomesum(this);" name="ootherincome" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+        
+         <br>    
+        
+        
+        
+                
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Total income for annual return year</label>
+             <h5 class="text-success text-center">Default members
+                </h5>
+            <div class="col-sm-10">
+                             <br>
+               Should Be：<input type='text' disabled="disabled" id='x' style="border:0px solid white; width:400px" />
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="defaultoneb" onkeyup="defaultsum(this);"  name="defaultoneb" placeholder="B: total income amount" size="30" >
+                  </div>
+            </div>
+              
+              <h5 class="text-success text-center">Other members of scheme
+                </h5>
+            <div class="col-sm-10">
+                        <br>
+               Should Be：<input type='text' disabled="disabled" id='s' style="border:0px solid white; width:400px" />
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="defaultonebtwo" onkeyup="othersum(this);" name="defaultonebtwo" placeholder="B2: total income amount" size="30" >
+                  </div>
+            </div>
+        </div>
+        
+         <br>  
+    
+     
+        
+        
+        
+        
+           
+       <h3 class="text-success text-center">Categories of expenditure for annual return year</h3>
+        
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">1. First home purchase withdrawals</label>
+             <h5 class="text-success text-center">Default members
+                </h5>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="defirsthomewithdrawalnum" name="defirsthomewithdrawalnum" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="defirsthomewithdrawalamount" onkeyup="defaultexpendituresum(this);" name="defirsthomewithdrawalamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+              
+              <h5 class="text-success text-center">Other members of scheme
+                </h5>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="ofirsthomewithdrawalnum" name="ofirsthomewithdrawalnum" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="ofirsthomewithdrawalamount" onkeyup="otherexpendituresum(this);" name="ofirsthomewithdrawalamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+        
+         <br>
+        
+        
+        
+        
+        
+        
+                <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">2. Mortgage instalment withdrawal</label>
+             <h5 class="text-success text-center">Default members
+                </h5>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="demortgageinstalmentwithdrawalnum" name="demortgageinstalmentwithdrawalnum" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="demortgageinstalmentwithdrawalamount" onkeyup="defaultexpendituresum(this);" name="demortgageinstalmentwithdrawalamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+              
+              <h5 class="text-success text-center">Other members of scheme
+                </h5>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="omortgageinstalmentwithdrawalnum" name="omortgageinstalmentwithdrawalnum" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="omortgageinstalmentwithdrawalamount" onkeyup="otherexpendituresum(this);" name="omortgageinstalmentwithdrawalamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+        
+         <br>
+        
+        
+        
+        
+        
+        
+        
+                <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">3. KiwiSaver end payment date withdrawals</label>
+             <h5 class="text-success text-center">Default members
+                </h5>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="dekiwisaverendwithdrawalnum" name="dekiwisaverendwithdrawalnum" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="dekiwisaverendwithdrawalamount" onkeyup="defaultexpendituresum(this);" name="dekiwisaverendwithdrawalamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+              
+              <h5 class="text-success text-center">Other members of scheme
+                </h5>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="okiwisaverendwithdrawalnum" name="okiwisaverendwithdrawalnum" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="okiwisaverendwithdrawalamount" onkeyup="otherexpendituresum(this);" name="okiwisaverendwithdrawalamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+        
+         <br>
+        
+        
+        
+        
+        
+        
+        
+        
+                <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">4. Withdrawals on death</label>
+             <h5 class="text-success text-center">Default members
+                </h5>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="dedeathwithdrawalnum" name="dedeathwithdrawalnum" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="dedeathwithdrawalamount" onkeyup="defaultexpendituresum(this);" name="dedeathwithdrawalamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+              
+              <h5 class="text-success text-center">Other members of scheme
+                </h5>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="odeathwithdrawalnum" name="odeathwithdrawalnum" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="odeathwithdrawalamount" onkeyup="otherexpendituresum(this);" name="odeathwithdrawalamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+        
+         <br>
+        
+        
+        
+        
+        
+        
+        
+        
+                <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">5. Serious illness withdrawals</label>
+             <h5 class="text-success text-center">Default members
+                </h5>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="deseriousillnesswithdrawalnum" name="deseriousillnesswithdrawalnum" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="deseriousillnesswithdrawalamount" onkeyup="defaultexpendituresum(this);" name="deseriousillnesswithdrawalamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+              
+              <h5 class="text-success text-center">Other members of scheme
+                </h5>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="oseriousillnesswithdrawalnum" name="oseriousillnesswithdrawalnum" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="oseriousillnesswithdrawalamount" onkeyup="otherexpendituresum(this);" name="oseriousillnesswithdrawalamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+        
+         <br>
+        
+        
+        
+        
+        
+        
+        
+                <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">6. Withdrawals or transfers on permanent emigration</label>
+             <h5 class="text-success text-center">Default members
+                </h5>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="depermanentemigrationwithdrawalnum" name="depermanentemigrationwithdrawalnum" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="depermanentemigrationwithdrawalamount" onkeyup="defaultexpendituresum(this);" name="depermanentemigrationwithdrawalamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+              
+              <h5 class="text-success text-center">Other members of scheme
+                </h5>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="opermanentemigrationwithdrawalnum" name="opermanentemigrationwithdrawalnum" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="opermanentemigrationwithdrawalamount" onkeyup="otherexpendituresum(this);" name="opermanentemigrationwithdrawalamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+        
+         <br>
+        
+        
+        
+        
+        
+        
+        
+        
+                <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">7. Significant financial hardship withdrawals</label>
+             <h5 class="text-success text-center">Default members
+                </h5>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="definancialhardshipwithdrawalnum" name="definancialhardshipwithdrawalnum" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="definancialhardshipwithdrawalamount" onkeyup="defaultexpendituresum(this);" name="definancialhardshipwithdrawalamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+              
+              <h5 class="text-success text-center">Other members of scheme
+                </h5>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="ofinancialhardshipwithdrawalnum" name="ofinancialhardshipwithdrawalnum" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="ofinancialhardshipwithdrawalamount" onkeyup="otherexpendituresum(this);" name="ofinancialhardshipwithdrawalamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+        
+         <br>
+        
+        
+        
+        
+        
+        
+                <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">8. Transfers of members’ accumulations out of scheme into Australian superannuation schemes</label>
+             <h5 class="text-success text-center">Default members
+                </h5>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="detransferintoaunum" name="detransferintoaunum" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="detransferintoauamount" onkeyup="defaultexpendituresum(this);" name="detransferintoauamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+              
+              <h5 class="text-success text-center">Other members of scheme
+                </h5>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="otransferintoaunum" name="otransferintoaunum" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="otransferintoauamount" onkeyup="otherexpendituresum(this);" name="otransferintoauamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+        
+         <br>
+        
+        
+        
+        
+        
+        
+        
+        
+                <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">9. Transfers of members’ accumulations out of scheme into other KiwiSaver schemes</label>
+             <h5 class="text-success text-center">Default members
+                </h5>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="detransferintootherkiwisavernum" name="detransferintootherkiwisavernum" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="detransferintootherkiwisaveramount" onkeyup="defaultexpendituresum(this);" name="detransferintootherkiwisaveramount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+              
+              <h5 class="text-success text-center">Other members of scheme
+                </h5>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="otransferintootherkiwisavernum" name="otransferintootherkiwisavernum" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="otransferintootherkiwisaveramount" onkeyup="otherexpendituresum(this);" name="otransferintootherkiwisaveramount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+        
+         <br>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+                <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">10. Amounts required to be paid under other enactments</label>
+             <h5 class="text-success text-center">Default members
+                </h5>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="deunderotherenactmentnum" name="deunderotherenactmentnum" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="deunderotherenactmentamount" onkeyup="defaultexpendituresum(this);" name="deunderotherenactmentamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+              
+              <h5 class="text-success text-center">Other members of scheme
+                </h5>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="ounderotherenactmentnum" name="ounderotherenactmentnum" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="ounderotherenactmentamount" onkeyup="otherexpendituresum(this);" name="ounderotherenactmentamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+        
+         <br>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+                <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">11. Invalid enrolment withdrawals and late opt-outs</label>
+             <h5 class="text-success text-center">Default members
+                </h5>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="deinvalidenrolmentwithdrawalnum" name="deinvalidenrolmentwithdrawalnum" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="deinvalidenrolmentwithdrawalamount" onkeyup="defaultexpendituresum(this);" name="deinvalidenrolmentwithdrawalamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+              
+              <h5 class="text-success text-center">Other members of scheme
+                </h5>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="oinvalidenrolmentwithdrawalnum" name="oinvalidenrolmentwithdrawalnum" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="oinvalidenrolmentwithdrawalamount" onkeyup="otherexpendituresum(this);" name="oinvalidenrolmentwithdrawalamount" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+        
+         <br>
+        
+        
+        
+        
+        
+        
+        
+                <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">12. Administration fees</label>
+             <h5 class="text-success text-center">Default members
+                </h5>
+            <div class="col-sm-10">
+            
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="deadministrationfee" onkeyup="defaultexpendituresum(this);" name="deadministrationfee" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+              
+              <h5 class="text-success text-center">Other members of scheme
+                </h5>
+            <div class="col-sm-10">
+              
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="oadministrationfee" onkeyup="otherexpendituresum(this);" name="oadministrationfee" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+        
+         <br>
+        
+        
+        
+        
+        
+        
+        
+                <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">13. Investment management fees</label>
+             <h5 class="text-success text-center">Default members
+                </h5>
+            <div class="col-sm-10">
+              
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="deinvestmentmanagementfee" onkeyup="defaultexpendituresum(this);" name="deinvestmentmanagementfee" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+              
+              <h5 class="text-success text-center">Other members of scheme
+                </h5>
+            <div class="col-sm-10">
+               
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="oinvestmentmanagementfee" onkeyup="otherexpendituresum(this);" name="oinvestmentmanagementfee" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+        
+         <br>
+        
+        
+        
+        
+        
+        
+                <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">14. Supervisor fees and (in the case of a restricted scheme) trustee fees</label>
+             <h5 class="text-success text-center">Default members
+                </h5>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+               
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="desupervisorfee" onkeyup="defaultexpendituresum(this);" name="desupervisorfee" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+              
+              <h5 class="text-success text-center">Other members of scheme
+                </h5>
+            <div class="col-sm-10">
+             
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="osupervisorfee" onkeyup="otherexpendituresum(this);" name="osupervisorfee" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+        </div>
+         <br>
+              
+              
+              
+               <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">15. Insurance premiums</label>
+             <h5 class="text-success text-center">Default members
+                </h5>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+               
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="deinsurancepremium" onkeyup="defaultexpendituresum(this);" name="deinsurancepremium" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+              
+              <h5 class="text-success text-center">Other members of scheme
+                </h5>
+            <div class="col-sm-10">
+             
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="oinsurancepremium" onkeyup="otherexpendituresum(this);" name="oinsurancepremium" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+              </div>
+         <br>
+              
+              
+              
+               <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">16. Taxation</label>
+             <h5 class="text-success text-center">Default members
+                </h5>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+               
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="detax" onkeyup="defaultexpendituresum(this);" name="detax" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+              
+              <h5 class="text-success text-center">Other members of scheme
+                </h5>
+            <div class="col-sm-10">
+             
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="otax" onkeyup="otherexpendituresum(this);" name="otax" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+              </div>
+         <br>
+              
+              
+              
+              
+               <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">17. Other scheme expenses</label>
+             <h5 class="text-success text-center">Default members
+                </h5>
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+               
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="deotherexpense" onkeyup="defaultexpendituresum(this);" name="deotherexpense" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+              
+              <h5 class="text-success text-center">Other members of scheme
+                </h5>
+            <div class="col-sm-10">
+             
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="ootherexpense" onkeyup="otherexpendituresum(this);" name="ootherexpense" placeholder="please enter amount ($)" size="30" >
+                  </div>
+            </div>
+        </div>
+              </div>
+        
+         <br>
+              
+              
+              
+              
+              
+               <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Total expenditure for annual return year</label>
+             <h5 class="text-success text-center">Default members
+                </h5>
+                            <br>
+               Should Be：<input type='text' disabled="disabled" id='z' style="border:0px solid white; width:400px" />
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+               
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="defaultonec" onkeyup="defaultsum(this);" name="defaultonec" placeholder="C: total expenditure amoun" size="30" >
+                  </div>
+            </div>
+              
+              <h5 class="text-success text-center">Other members of scheme
+                </h5>
+                              <br>
+               Should Be：<input type='text' disabled="disabled" id='t' style="border:0px solid white; width:400px" />
+            <div class="col-sm-10">
+             
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="defaultonectwo" onkeyup="othersum(this);" name="defaultonectwo" placeholder="C2: total expenditure amount" size="30" >
+                  </div>
+            </div>
+        </div>
+              </div>
+            
+        
+         <br>
+        
+              
+              
+                           
+              
+              
+              
+               <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Closing balance of scheme assets at end of annual return year</label>
+             <h5 class="text-success text-center">Default members
+                </h5>
+              <br>
+               Should Be：<input type='text' disabled="disabled" id='y' style="border:0px solid white; width:400px" />
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+               
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="defautbalance" name="defautbalance" placeholder="A + B − C" size="30" >
+                  </div>
+            </div>
+              
+              <h5 class="text-success text-center">Other members of scheme
+                </h5>
+                <br>
+               Should Be：<input type='text' disabled="disabled" id='w' style="border:0px solid white; width:400px" />
+            <div class="col-sm-10">
+             
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="otherbalance" name="otherbalance" placeholder="A2 + B2 − C2" size="30" >
+                  </div>
+            </div>
+              </div>
+              </div>
+ 
+        
+         <br>
+        
+        <li>
+             <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10"><a href="Defaulttwo.html">
+            <button type="button" class="btn btn-success" id="submitBtn">Save and Next</button></a>
+                 </div>
+            </div>
+        </li>
+        
+          
+        
+        <div class="page-normal">
+	<span class="page-prev">&lt;</span>
+	<!-- 数字1 代表当前页面-->
+	<span class="page-current">1</span>
+	<a href="Defaulttwo.html">2</a>
+	<a href="Defaultthree.html">3</a>
+	<a href="Defaultfour.html">4</a>
+	<a href="Defaultfive.html">5</a>
+	<a href="Defaultsix.html">6</a>
+	<a href="Defaultseven.html">7</a>
+	<a href="Defaulteight.html">8</a>
+    <a href="Defaultnine.html">9</a>
+    <a href="Defaultten.html">10</a>
+	<a href="Defaulttwo.html">&gt;</a>
+</div>
+        
+
+      
+    </form>
+</body>
+ 
+    
+<script>
+
+    function defaultsum(obj) {
+var a = document.getElementById("defaultonea");
+var b = document.getElementById("defaultoneb");
+var c = document.getElementById("defaultonec");
+if(a.value!='')
+{
+y.value=parseInt(a.value);
+
+}
+if(a.value!=''&&b.value!='')
+{
+y.value=parseInt(a.value)+parseInt(b.value);
+
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+y.value=parseInt(a.value)+parseInt(b.value)-parseInt(c.value);
+}
+else y.value = "Please check if you enter all number that we required.";
+        }
+    
+    
+
+function othersum(obj) {
+var a = document.getElementById("defaultoneatwo");
+var b = document.getElementById("defaultonebtwo");
+var c = document.getElementById("defaultonectwo");
+if(a.value!='')
+{
+w.value=parseInt(a.value);
+
+}
+if(a.value!=''&&b.value!='')
+{
+w.value=parseInt(a.value)+parseInt(b.value);
+
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+w.value=parseInt(a.value)+parseInt(b.value)-parseInt(c.value);
+}
+else w.value = "Please check if you enter all number that we required.";
+        }
+    
+    
+    
+    
+function defaultincomesum(obj){
+        var a = document.getElementById("demembercontributionamount");
+        var b = document.getElementById("deemployeramount");
+        var c = document.getElementById("decrowncontributionamount");
+        var d = document.getElementById("detransfromretirementamount");
+        var e = document.getElementById("detransfromauamount");
+        var f = document.getElementById("delumpsumcontributionamount");
+        var g = document.getElementById("deothercontributionoversixfouramount");
+        var h = document.getElementById("deincomefrominvestment");
+        var i = document.getElementById("deotherincome");
+
+    
+if(a.value!='')
+{
+x.value=parseInt(a.value);
+}
+if(a.value!=''&&b.value!='')
+{
+x.value=parseInt(a.value)+parseInt(b.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+x.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!='')
+{
+x.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value);
+}       
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!='')
+{
+x.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value);
+}       
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!='')
+{
+x.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value);
+}        
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!='')
+{
+x.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!='')
+{
+x.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!='')
+{
+x.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value);
+}
+
+else x.value = "Please check if you enter all number that we required.";
+}
+    
+   
+    
+function otherincomesum(obj){
+        var a = document.getElementById("omembercontributionamount");
+        var b = document.getElementById("oemployeramount");
+        var c = document.getElementById("ocrowncontributionamount");
+        var d = document.getElementById("transfromotherkiwisaveramount");
+        var e = document.getElementById("otransfromretirementamount");
+        var f = document.getElementById("otransfromauamount");
+        var g = document.getElementById("olumpsumcontributionamount");
+        var h = document.getElementById("oothercontributionoversixfouramount");
+        var i = document.getElementById("oincomefrominvestment");
+        var j = document.getElementById("ootherincome");
+    
+if(a.value!='')
+{
+s.value=parseInt(a.value);
+}
+if(a.value!=''&&b.value!='')
+{
+s.value=parseInt(a.value)+parseInt(b.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+s.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!='')
+{
+s.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value);
+}       
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!='')
+{
+s.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value);
+}       
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!='')
+{
+s.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value);
+}        
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!='')
+{
+s.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!='')
+{
+s.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!='')
+{
+s.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!='')
+{
+s.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value);
+}
+else s.value = "Please check if you enter all number that we required.";
+}
+    
+    
+    
+    
+    
+function defaultexpendituresum(obj){
+        var a = document.getElementById("defirsthomewithdrawalamount");
+        var b = document.getElementById("demortgageinstalmentwithdrawalamount");
+        var c = document.getElementById("dekiwisaverendwithdrawalamount");
+        var d = document.getElementById("dedeathwithdrawalamount");
+        var e = document.getElementById("deseriousillnesswithdrawalamount");
+        var f = document.getElementById("depermanentemigrationwithdrawalamount");
+        var g = document.getElementById("definancialhardshipwithdrawalamount");
+        var h = document.getElementById("detransferintoauamount");
+        var i = document.getElementById("detransferintootherkiwisaveramount");
+        var j = document.getElementById("deunderotherenactmentamount");
+        var k = document.getElementById("deinvalidenrolmentwithdrawalamount");
+        var l = document.getElementById("deadministrationfee");
+        var m = document.getElementById("deinvestmentmanagementfee");
+        var n = document.getElementById("desupervisorfee");
+        var o = document.getElementById("deinsurancepremium");
+        var p = document.getElementById("detax");
+        var q = document.getElementById("deotherexpense");
+    
+    
+    
+if(a.value!='')
+{
+z.value=parseInt(a.value);
+}
+if(a.value!=''&&b.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value);
+}       
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value);
+}       
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value);
+}        
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!=''&&k.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value)+parseInt(k.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!=''&&k.value!=''&&l.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value)+parseInt(k.value)+parseInt(l.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!=''&&k.value!=''&&l.value!=''&&m.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value)+parseInt(k.value)+parseInt(l.value)+parseInt(m.value);
+}    
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!=''&&k.value!=''&&l.value!=''&&m.value!=''&&n.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value)+parseInt(k.value)+parseInt(l.value)+parseInt(m.value)+parseInt(n.value);
+}      
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!=''&&k.value!=''&&l.value!=''&&m.value!=''&&n.value!=''&&o.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value)+parseInt(k.value)+parseInt(l.value)+parseInt(m.value)+parseInt(n.value)+parseInt(o.value);
+}  
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!=''&&k.value!=''&&l.value!=''&&m.value!=''&&n.value!=''&&o.value!=''&&p.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value)+parseInt(k.value)+parseInt(l.value)+parseInt(m.value)+parseInt(n.value)+parseInt(o.value)+parseInt(p.value);
+}      
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!=''&&k.value!=''&&l.value!=''&&m.value!=''&&n.value!=''&&o.value!=''&&p.value!=''&&q.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value)+parseInt(k.value)+parseInt(l.value)+parseInt(m.value)+parseInt(n.value)+parseInt(o.value)+parseInt(p.value)+parseInt(q.value);
+}
+else z.value = "Please check if you enter all number that we required.";
+}
+    
+
+function otherexpendituresum(obj){
+        var a = document.getElementById("ofirsthomewithdrawalamount");
+        var b = document.getElementById("omortgageinstalmentwithdrawalamount");
+        var c = document.getElementById("okiwisaverendwithdrawalamount");
+        var d = document.getElementById("odeathwithdrawalamount");
+        var e = document.getElementById("oseriousillnesswithdrawalamount");
+        var f = document.getElementById("opermanentemigrationwithdrawalamount");
+        var g = document.getElementById("ofinancialhardshipwithdrawalamount");
+        var h = document.getElementById("otransferintoauamount");
+        var i = document.getElementById("otransferintootherkiwisaveramount");
+        var j = document.getElementById("ounderotherenactmentamount");
+        var k = document.getElementById("oinvalidenrolmentwithdrawalamount");
+        var l = document.getElementById("oadministrationfee");
+        var m = document.getElementById("oinvestmentmanagementfee");
+        var n = document.getElementById("osupervisorfee");
+        var o = document.getElementById("oinsurancepremium");
+        var p = document.getElementById("otax");
+        var q = document.getElementById("ootherexpense");
+    
+    
+    
+if(a.value!='')
+{
+t.value=parseInt(a.value);
+}
+if(a.value!=''&&b.value!='')
+{
+t.value=parseInt(a.value)+parseInt(b.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+t.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!='')
+{
+t.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value);
+}       
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!='')
+{
+t.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value);
+}       
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!='')
+{
+t.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value);
+}        
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!='')
+{
+t.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!='')
+{
+t.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!='')
+{
+t.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!='')
+{
+t.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!=''&&k.value!='')
+{
+t.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value)+parseInt(k.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!=''&&k.value!=''&&l.value!='')
+{
+t.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value)+parseInt(k.value)+parseInt(l.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!=''&&k.value!=''&&l.value!=''&&m.value!='')
+{
+t.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value)+parseInt(k.value)+parseInt(l.value)+parseInt(m.value);
+}    
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!=''&&k.value!=''&&l.value!=''&&m.value!=''&&n.value!='')
+{
+t.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value)+parseInt(k.value)+parseInt(l.value)+parseInt(m.value)+parseInt(n.value);
+}      
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!=''&&k.value!=''&&l.value!=''&&m.value!=''&&n.value!=''&&o.value!='')
+{
+t.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value)+parseInt(k.value)+parseInt(l.value)+parseInt(m.value)+parseInt(n.value)+parseInt(o.value);
+}  
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!=''&&k.value!=''&&l.value!=''&&m.value!=''&&n.value!=''&&o.value!=''&&p.value!='')
+{
+t.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value)+parseInt(k.value)+parseInt(l.value)+parseInt(m.value)+parseInt(n.value)+parseInt(o.value)+parseInt(p.value);
+}      
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!=''&&k.value!=''&&l.value!=''&&m.value!=''&&n.value!=''&&o.value!=''&&p.value!=''&&q.value!='')
+{
+t.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value)+parseInt(k.value)+parseInt(l.value)+parseInt(m.value)+parseInt(n.value)+parseInt(o.value)+parseInt(p.value)+parseInt(q.value);
+}
+else t.value = "Please check if you enter all number that we required.";
+}
+    
+    
+    
+    
+    
+    
+    
+</script>
+</html>

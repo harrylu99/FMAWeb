@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 64</title>
+</head>
+<body>
+
+    <br> <br>
+    <h2 class="text-success text-center">Section 64</h2>
+    <br>
+    
+64 Contribution rate
+    <br>    <br>
+(1)
+The contribution rate, in relation to an employee and to an employer and to each payment of salary or wages, is—
+        <br>    <br>
+(a)
+3% of the employee’s gross salary or wages, if—
+        <br>    <br>
+(i)
+section 60(1)﻿(a), (b) or (c) first applied in respect of the employee on or after 1 April 2009 and the employee has not given his or her employer a notice under subsection (2); or
+        <br>    <br>
+(ii)
+section 66A applied in respect of the employee immediately before 1 April 2009; or
+        <br>    <br>
+(iii)
+the employee is on a 2% contribution rate immediately before the first pay period that starts on or after 1 April 2013 because they chose 2% under subsection (2); or
+        <br>    <br>
+(ab)
+4% of the employee’s gross salary or wages, if section 60(1)﻿(a), (b) or (c) first applied in respect of the employee before 1 April 2009 and the employee has not given his or her employer a notice under paragraph (b); or
+        <br>    <br>
+(b)
+8% of the employee’s gross salary or wages if the employee gives his or her employer a notice requiring contributions to be deducted at that rate.
+        <br>    <br>
+(2)
+Despite subsection (1), the employee may choose a contribution rate of 3%, 4%, 6%, 8%, or 10% of their gross salary or wages by giving notice to their employer of the rate they choose.
+        <br>    <br>
+(3)
+The new rate applies to the next payment of salary or wages that is calculated after the employer receives that notice.
+        <br>    <br>
+(3B)
+For a contribution rate under subsection (1)﻿(a), when a change occurs to a rate in this Act, or in regulations made under this Act, affecting the contribution that must be deducted from a payment of salary or wages, the calculation of the amount of the contribution must be made at the rate applying on the day on which the salary or wages are paid.
+        <br>    <br>
+(4)
+An employee may not change his or her contribution rate in relation to an employer at intervals that are less than 92 days apart unless the employer agrees.
+        <br>    <br>    <br>
+Section 64(1)﻿(a): substituted, on 1 April 2009, by section 43(1) of the Taxation (Urgent Measures and Annual Rates) Act 2008 (2008 No 105).
+        <br>
+Section 64(1)﻿(a): amended, on 1 April 2013 (applying for payments of salary or wages for pay periods that start on or after that date), by section 231(1) of the Taxation (Annual Rates, Returns Filing, and Remedial Matters) Act 2012 (2012 No 88).
+        <br>
+Section 64(1)﻿(a)﻿(iii): inserted, on 1 April 2013 (applying for payments of salary or wages for pay periods that start on or after that date), by section 231(2) of the Taxation (Annual Rates, Returns Filing, and Remedial Matters) Act 2012 (2012 No 88).
+Section 64(1)﻿(ab): inserted, on 1 April 2009, by section 43(1) of the Taxation (Urgent Measures and Annual Rates) Act 2008 (2008 No 105).
+        <br>
+Section 64(2): substituted (with effect on 1 April 2009), on 6 October 2009, by section 721 of the Taxation (International Taxation, Life Insurance, and Remedial Matters) Act 2009 (2009 No 34).
+        <br>
+Section 64(2): amended, on 1 April 2019, by section 314 of the Taxation (Annual Rates for 2018–19, Modernising Tax Administration, and Remedial Matters) Act 2019 (2019 No 5).
+        <br>
+Section 64(3B): inserted, on 1 April 2018, by section 381 of the Taxation (Annual Rates for 2017–18, Employment and Investment Income, and Remedial Matters) Act 2018 (2018 No 5).
+        <br>
+Section 64(4): amended, on 1 April 2020, by section 20(2) of the Taxation (KiwiSaver, Student Loans, and Remedial Matters) Act 2020 (2020 No 5).
+    
+    
+   
+</body>
+    
+    
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+    document.getElementById('submitBtn').onclick=function(){
+        var name = document.getElementById('name').value;
+        var phone = document.getElementById('phone').value;
+        var pick_up_address = document.getElementById('pick_up_address').value;
+        var destination = document.getElementById('destination').value;
+        var pick_up_date = document.getElementById('pick_up_date').value;
+        var pick_up_time = document.getElementById('pick_up_time').value;
+        // name cannot be empty
+        if (name == '') {
+            alert("name cannot be empty");
+            return false;
+        }
+        // phone cannot be empty
+        if (phone == '') {
+            alert("phone cannot be empty");
+            return false;
+        }
+        // pick_up_address cannot be empty
+        if (pick_up_address == '') {
+            alert("pick up address cannot be empty");
+            return false;
+        }
+        // destination cannot be empty
+        if (destination == '') {
+            alert("destination cannot be empty");
+            return false;
+        }
+        if (pick_up_date == '') {
+            alert("pick up date cannot be empty");
+            return false;
+        }
+        if (pick_up_time == '') {
+            alert("pick up time cannot be empty");
+            return false;
+        }
+
+        // var data = $('#bookForm').serialize();
+        var data = "name="+name+"&phone="+phone+"&pick_up_address="+pick_up_address+"&destination="+destination+"&pick_up_date="+pick_up_date+"&pick_up_time="+pick_up_time
+        var url = "?action=book";
+        var xmlhttp;
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp=new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState==4) {
+                if (xmlhttp.status==200) {
+                    var data = JSON.parse(xmlhttp.responseText);
+                    if (data.error_no == 0) {
+                        alert(data.message);
+                        window.location.reload();
+                    } else {
+                        alert(data.message);
+                    }
+                } else {
+                    alert('error');
+                }
+            }
+        }
+        xmlhttp.open("POST", url, true);
+        xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        xmlhttp.send(data);
+    };
+});
+</script>
+</html>

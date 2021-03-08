@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+    <style type="text/css">
+	
+	/*设置 a 标签的css样式*/
+	.page-normal a{
+		border: 1px;
+		padding: 5px 7px;       
+		margin-left: 20px;/*设置标签 a 之间的间隔*/
+		text-decoration: none;/*去除页码数字下面的下划线*/
+	}
+
+	.page-normal{       
+		text-align: center;
+	}
+	
+	/*进行代码优化，将不同css样式中共有的属性放在一起，有助于提高运行效率*/
+	.page-normal a, .page-normal a:hover, .page-normal .page-prev, .page-normal .page-current{
+		border: 1px;
+		padding: 5px 7px;
+	}
+	
+</style>
+    <title>Default Table 10</title>
+</head>
+<body>
+    <h1  class="text-success text-center">Annual return for KiwiSaver schemes (other than default KiwiSaver schemes)
+    </h1>
+    <h2 class="text-success text-center">Table 10—Profile of switches between investment funds (including default investment product)</h2>
+    
+    <form action="" method='POST' role="form"  class="form-horizontal" id='bookForm'>
+        
+      <h4 class="text-success text-center">How many switches between investment funds made in annual return year</h4>  
+   
+        <br>
+          <div class="form-group">
+              <h5 label for="text" class="col-sm-10">1 switch</h5>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="deoneswithnum" name="deoneswithnum" placeholder="please enter number of default members who made those switches" size="60">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="ooneswithnum" name="ooneswithnum" placeholder="please enter number of other members who made those switches" size="60" >
+                  </div>
+            </div>
+              
+              
+              <h5 label for="text" class="col-sm-10">2 switches</h5>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="detwoswitchnum" name="detwoswitchnum" placeholder="please enter number of default members who made those switches" size="60">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="otwoswitchnum" name="otwoswitchnum" placeholder="please enter number of other members who made those switches" size="60" >
+                  </div>
+            </div>
+              
+              <h5 label for="text" class="col-sm-10">3 switches</h5>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="dethreeswitchnum" name="dethreeswitchnum" placeholder="please enter number of default members who made those switches" size="60">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="othreeswitchnum" name="othreeswitchnum" placeholder="please enter number of other members who made those switches" size="60" >
+                  </div>
+            </div>
+              
+              
+              <h5 label for="text" class="col-sm-10">4 switches</h5>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="defourswitchnum" name="defourswitchnum" placeholder="please enter number of default members who made those switches" size="60">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="ofourswitchnum" name="ofourswitchnum" placeholder="please enter number of other members who made those switches" size="60" >
+                  </div>
+            </div>
+              
+              <h5 label for="text" class="col-sm-10">5 switches or more</h5>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="defiveswitchnum" name="defiveswitchnum" placeholder="please enter number of default members who made those switches" size="60">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="ofiveswitchnum" name="ofiveswitchnum" placeholder="please enter number of other members who made those switches" size="60" >
+                  </div>
+            </div>
+        
+        
+        
+        
+        <li>
+             <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10"><a href="Defaultfinish.html">
+            <button type="button" class="btn btn-success" id="submitBtn">Save and Next</button></a>
+                 </div>
+            </div>
+        </li>
+  
+              
+              
+              
+    <div class="page-normal">
+	<a href="Defaultnine.html">&lt;</a>
+    <a href="Defaultone.html">1</a>
+    <a href="Defaulttwo.html">2</a>
+    <a href="Defaultten.html">3</a>
+    <a href="Defaultfour.html">4</a>
+	<a href="Defaultfive.html">5</a>
+    <a href="Defaultsix.html">6</a>
+    <a href="Defaultseven.html">7</a>
+    <a href="Defaulteight.html">8</a>
+    <a href="Defaultnine.html">9</a>
+    <span class="page-current">10</span>
+	<span class="page-prev">&gt;</span>
+</div> 
+              
+              
+        </div>
+    </form>
+</body>
+    
+    
+<script>
+
+</script>
+</html>

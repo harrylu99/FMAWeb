@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <style type="text/css">
+	
+	/*设置 a 标签的css样式*/
+	.page-normal a{
+		border: 1px;
+		padding: 5px 7px;       
+		margin-left: 20px;/*设置标签 a 之间的间隔*/
+		text-decoration: none;/*去除页码数字下面的下划线*/
+	}
+
+	.page-normal{       
+		text-align: center;
+	}
+	
+	/*进行代码优化，将不同css样式中共有的属性放在一起，有助于提高运行效率*/
+	.page-normal a, .page-normal a:hover, .page-normal .page-prev, .page-normal .page-current{
+		border: 1px;
+		padding: 5px 7px;
+	}
+	
+</style>
+    
+    
+    <title>Acitve Table 8</title>
+</head>
+<body>
+    <h1  class="text-success text-center">Annual return for KiwiSaver schemes (other than default KiwiSaver schemes)
+    </h1>
+    <h2 class="text-success text-center">Table 8—Profile of switches between investment funds</h2>
+    
+    <form action="" method='POST' role="form"  class="form-horizontal" id='bookForm'>
+ 
+                    
+        
+       <h3 class="text-success text-center">How many switches between investment funds made in annual return year</h3>
+        
+       
+        
+         <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">1 switch</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="oneswitchnum" name="oneswitchnum" placeholder="please enter number of members who made those switches" size="50">
+                </div>            
+            </div>
+        </div>
+         <br>
+        
+        
+                 <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">2 switches</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="twoswitchnum" name="twoswitchnum" placeholder="please enter number of members who made those switches" size="50">
+                </div>            
+            </div>
+        </div>
+         <br>
+        
+                 <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">3 switches</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="threeswtichnum" name="threeswtichnum" placeholder="please enter number of members who made those switches" size="50">
+                </div>            
+            </div>
+        </div>
+         <br>
+        
+                 <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">4 switches</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="fourswitchnum" name="fourswitchnum" placeholder="please enter number of members who made those switches" size="50">
+                </div>            
+            </div>
+        </div>
+         <br>
+        
+                 <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">5 switches or more</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="fiveswitchnum" name="fiveswitchnum" placeholder="please enter number of members who made those switches" size="50">
+                </div>            
+            </div>
+        </div>
+         <br>
+        
+
+        
+        <li>
+             <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10"><a href="ActiveFinish.html">
+            <button type="button" class="btn btn-success" id="submitBtn">Save and Next</button></a>
+                 </div>
+            </div>
+        </li>
+        
+                
+    <div class="page-normal">
+	<a href="Activeseven.html">&lt;</a>
+	<a href="Activeone.html">1</a>
+    <a href="Activetwo.html">2</a> 
+    <a href="Activethree.html">3</a>
+    <a href="Activefour.html">4</a>
+    <a href="Activefive.html">5</a>
+    <a href="Activesix.html">6</a>
+	<a href="Activeseven.html">7</a>
+	<span class="page-current">8</span>
+    <span class="page-prev">&gt;</span>
+</div>
+        
+        
+    </form>
+</body>
+    
+    
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+    document.getElementById('submitBtn').onclick=function(){
+        var name = document.getElementById('name').value;
+        var phone = document.getElementById('phone').value;
+        var pick_up_address = document.getElementById('pick_up_address').value;
+        var destination = document.getElementById('destination').value;
+        var pick_up_date = document.getElementById('pick_up_date').value;
+        var pick_up_time = document.getElementById('pick_up_time').value;
+        // name cannot be empty
+        if (name == '') {
+            alert("name cannot be empty");
+            return false;
+        }
+        // phone cannot be empty
+        if (phone == '') {
+            alert("phone cannot be empty");
+            return false;
+        }
+        // pick_up_address cannot be empty
+        if (pick_up_address == '') {
+            alert("pick up address cannot be empty");
+            return false;
+        }
+        // destination cannot be empty
+        if (destination == '') {
+            alert("destination cannot be empty");
+            return false;
+        }
+        if (pick_up_date == '') {
+            alert("pick up date cannot be empty");
+            return false;
+        }
+        if (pick_up_time == '') {
+            alert("pick up time cannot be empty");
+            return false;
+        }
+
+        // var data = $('#bookForm').serialize();
+        var data = "name="+name+"&phone="+phone+"&pick_up_address="+pick_up_address+"&destination="+destination+"&pick_up_date="+pick_up_date+"&pick_up_time="+pick_up_time
+        var url = "?action=book";
+        var xmlhttp;
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp=new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState==4) {
+                if (xmlhttp.status==200) {
+                    var data = JSON.parse(xmlhttp.responseText);
+                    if (data.error_no == 0) {
+                        alert(data.message);
+                        window.location.reload();
+                    } else {
+                        alert(data.message);
+                    }
+                } else {
+                    alert('error');
+                }
+            }
+        }
+        xmlhttp.open("POST", url, true);
+        xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        xmlhttp.send(data);
+    };
+});
+</script>
+</html>

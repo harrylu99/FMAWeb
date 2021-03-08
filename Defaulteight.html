@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <style type="text/css">
+	
+	/*设置 a 标签的css样式*/
+	.page-normal a{
+		border: 1px;
+		padding: 5px 7px;       
+		margin-left: 20px;/*设置标签 a 之间的间隔*/
+		text-decoration: none;/*去除页码数字下面的下划线*/
+	}
+
+	.page-normal{       
+		text-align: center;
+	}
+	
+	/*进行代码优化，将不同css样式中共有的属性放在一起，有助于提高运行效率*/
+	.page-normal a, .page-normal a:hover, .page-normal .page-prev, .page-normal .page-current{
+		border: 1px;
+		padding: 5px 7px;
+	}
+	
+</style>
+    <title>Default Table 8</title>
+</head>
+<body>
+    <h1  class="text-success text-center">Annual return for KiwiSaver schemes (other than default KiwiSaver schemes)
+    </h1>
+    <h2 class="text-success text-center">Table 8—Switches out of default investment product into other investment funds</h2>
+    
+    <form action="" method='POST' role="form"  class="form-horizontal" id='bookForm'>
+        
+        
+        
+       <h3 class="text-success text-center">Switches in annual return year</h3>
+        
+       
+        
+    
+        
+         <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Switches out of default investment product under instrument of appointment</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="memeberoutproductnum" name="memeberoutproductnum" placeholder="please enter number of members out of default investment product" size="57">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="memeberoutproductamount" name="memeberoutproductamount" placeholder="please enter amount ($) out of default investment product" size="57" >
+                  </div>
+            </div>
+        </div>
+         <br> 
+        
+        
+        
+        <h4 class="text-success text-center">Switches into other investment funds</h4>
+       
+                
+         <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Conservative</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="conservativeintoothernum" name="conservativeintoothernum" placeholder="please enter number of members into others" size="40">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="conservativeintootheramount" name="conservativeintootheramount" placeholder="please enter amount ($) into others" size="40" >
+                  </div>
+            </div>
+        </div>
+         <br> 
+        
+        
+        
+        
+     
+        
+        
+        
+        
+               
+        
+                        
+         <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Balanced</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="balancedintoothernum" name="balancedintoothernum" placeholder="please enter number of members into others" size="40">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="balancedintootheramount" name="balancedintootheramount" placeholder="please enter amount ($) into others" size="40" >
+                  </div>
+            </div>
+        </div>
+         <br> 
+        
+        
+        
+        
+        
+        
+        
+                        
+         <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Growth</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="growhtintoothernum" name="growhtintoothernum" placeholder="please enter number of members into others" size="40">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="growhtintootheramount" name="growhtintootheramount" placeholder="please enter amount ($) into others" size="40" >
+                  </div>
+            </div>
+        </div>
+         <br> 
+        
+        
+        
+        
+        
+        
+                        
+         <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Single sector funds ([insert relevant sector])</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="singleintoothernum" name="singleintoothernum" placeholder="please enter number of members into others" size="40">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="singleintootheramount" name="singleintootheramount" placeholder="please enter amount ($) into others" size="40" >
+                  </div>
+            </div>
+        </div>
+         <br> 
+        
+        
+        
+        
+        
+        
+                        
+         <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">[List any other investment funds available]</label>
+             
+ <div class="ibox-content col-md-12" style="padding-top: 0px; border: 0px; height: 100%; width: 100%">
+	<table class="table" id="filedTable">
+	    <tr>
+		<td width="30" align="center" bgcolor="#EFEFEF" Name="check">Select
+		    
+		</td>
+		<td width="300"  Name="fundname"EditType="TextBox">Name of the fund</td>
+		<td width="300" bgcolor="#EFEFEF" Name="numbermember" EditType="TextBox">The number of members in this investment funds</td>
+		<td width="300"  Name="fundamount" EditType="TextBox">The amount of switches into investment funds($)</td>
+		
+	    </tr>
+            <br>
+       
+	</table>
+        <br />
+        <input type="button" name="Submit" value="Add new" onclick="AddRow(document.getElementById('filedTable'))" />
+	<input type="button" name="Submit2" value="Delete" onclick="DeleteRow(document.getElementById('filedTable'))" />
+        </div>
+              
+        </div>
+         <br> 
+        
+        
+        
+        
+        
+        
+                        
+         <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Totals of switches into other investment funds</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="totalintoothernum" name="totalintoothernum" placeholder="total number" size="40">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="totalintootheramount" name="totalintootheramount" placeholder="total amount" size="40" >
+                  </div>
+            </div>
+        </div>
+         <br> 
+        
+        
+        
+        <li>
+             <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10"><a href="Defaultnine.html">
+            <button type="button" class="btn btn-success" id="submitBtn">Save and Next</button></a>
+                 </div>
+            </div>
+        </li>
+
+        
+    <div class="page-normal">
+	<a href="Defaultseven.html">&lt;</a>
+    <a href="Defaultone.html">1</a>
+    <a href="Defaulttwo.html">2</a>
+    <a href="Defaultten.html">3</a>
+    <a href="Defaultfour.html">4</a>
+	<a href="Defaultfive.html">5</a>
+    <a href="Defaultsix.html">6</a>
+    <a href="Defaultseven.html">7</a>
+    <span class="page-current">8</span>
+    <a href="Defaultnine.html">9</a>
+    <a href="Defaultten.html">10</a>
+	<a href="Defaultnine.html">&gt;</a>
+</div> 
+        
+    </form>
+</body>
+    
+    
+<script>
+
+                
+    //表格添加行    
+	function AddRow(table) {
+	    var lastRow = table.rows[table.rows.length - 1];
+	    var newRow = lastRow.cloneNode(true);  
+	    var length = table.rows.length; 
+	    table.tBodies[0].appendChild(newRow);
+	    newRow.cells[0].innerHTML = "<input type=\"checkbox\" name=\"checkbox\" value=\"checkbox\">"; 
+	    newRow.cells[0].setAttribute("id","new");
+	    newRow.cells[1].innerHTML = "enter the name" 
+	    newRow.cells[2].innerHTML = "enter the number" 
+		newRow.cells[3].innerHTML = "enter the amount"
+		//根据行号奇偶设置不同背景色
+		if(length%2 == 1){
+			newRow.cells[0].setAttribute("bgcolor","#FFFFFF");
+			newRow.cells[1].setAttribute("bgcolor","#FFFFFF");
+			newRow.cells[2].setAttribute("bgcolor","#FFFFFF");
+			newRow.cells[3].setAttribute("bgcolor","#FFFFFF"); 
+		}else{
+			newRow.cells[0].setAttribute("bgcolor","#f2fbff");
+			newRow.cells[1].setAttribute("bgcolor","#f2fbff");
+			newRow.cells[2].setAttribute("bgcolor","#f2fbff");
+			newRow.cells[3].setAttribute("bgcolor","#f2fbff");
+
+		}
+            //设置表格行可编辑
+	    SetRowCanEdit(newRow);
+	    return newRow;
+	
+	}
+    
+
+        //设置表格行可编辑
+    function SetRowCanEdit(row) { 
+        for (var i = 0; i < row.cells.length; i++) { 
+            //当前单元格指定了编辑类型，允许编辑 
+            var editType = row.cells[i].getAttribute("EditType"); if (!editType) { 
+            //当前单元格没有指定，查看当前列是否指定 
+            editType = row.parentNode.rows[0].cells[i].getAttribute("EditType"); } 
+            if (editType) { 
+                row.cells[i].onclick = function() { EditCell(this); }
+             } 
+        }
+    
+    }
+    
+
+    //设置指定单元格可编辑
+    function EditCell(element, editType) { 
+        var editType = element.getAttribute("EditType"); 
+        if (!editType) { 
+            //如果当前单元格没有指定，则查看当前列是否指定 
+            editType = element.parentNode.parentNode.rows[0].cells[element.cellIndex].getAttribute("EditType"); 
+        } 
+        switch (editType) { 
+            case "TextBox":
+                CreateTextBox(element, element.innerHTML); 
+                break; 
+            case "DropDownList": 
+                CreateDropDownList(element); 
+                break; default: break; 
+         }
+     }
+    
+    
+    
+
+    //为单元格创建可编辑输入框 
+    function CreateTextBox(element, value) { 
+        //编辑状态，true为编辑状态 
+        var editState = element.getAttribute("EditState"); 
+        if (editState != "true") { 
+            //创建文本框 
+            var textBox = document.createElement("INPUT"); 
+            textBox.style="width:100%"; 
+            textBox.type = "text"; 
+            textBox.className = "EditCell_TextBox"; 
+            //设置当前值 
+            if (!value) { 
+                value = element.getAttribute("Value"); 
+            } textBox.value = value; 
+            //设置失去焦点事件 
+            textBox.onblur = function() {CancelEditCell(this.parentNode, this.value); } 
+            //向当前单元格添加文本框 
+            ClearChild(element); 
+            element.appendChild(textBox); 
+            textBox.focus(); textBox.select(); 
+            //设置编辑状态 
+            element.setAttribute("EditState", "true"); 
+            element.parentNode.parentNode.setAttribute("CurrentRow", element.parentNode.rowIndex); }
+    }
+    
+    
+
+    //为单元格创建选择框 
+    function CreateDropDownList(element, value) { 
+        //编辑状态， true为编辑状态 
+        var editState = element.getAttribute("EditState"); 
+        if (editState != "true") { 
+            //创建下拉框 
+            var downList = document.createElement("Select"); 
+            downList.style="width:100%"; 
+            downList.className = "EditCell_DropDownList"; 
+            //添加列表项 
+            var items = element.getAttribute("DataItems"); 
+            if (!items) { 
+                items = element.parentNode.parentNode.rows[0].cells[element.cellIndex].getAttribute("DataItems");
+            } 
+            if (items) { 
+                items = eval("[" + items + "]"); 
+                for (var i = 0; i < items.length; i++) { 
+                    var oOption = document.createElement("OPTION"); 
+                    oOption.text = items[i].text; 
+                    oOption.value = items[i].value; downList.options.add(oOption); 
+                } 
+            } 
+            //设置列表当前值 
+            if (!value) { 
+                value = element.getAttribute("Value"); 
+            } downList.value = value; 
+            //设置下拉框失去焦点事件 
+            downList.onblur = function() { 
+                CancelEditCell(this.parentNode, this.value, this.options[this.selectedIndex].text); 
+            } 
+            //向当前单元格添加下拉框 
+            ClearChild(element); 
+            element.appendChild(downList); 
+            downList.focus(); 
+            //设置编辑状态 
+            element.setAttribute("EditState", "true"); 
+            element.parentNode.parentNode.setAttribute("LastEditRow", element.parentNode.rowIndex); 
+        }
+    }
+    //取消单元格编辑状态 
+    function CancelEditCell(element, value, text) { 
+        element.setAttribute("Value", value); 
+        if (text) { 
+            element.innerHTML = text; 
+        } else { 
+            element.innerHTML = value; 
+        } element.setAttribute("EditState", "false"); 
+    }
+    //清空指定对象的所有字节点 
+    function ClearChild(element) { 
+        element.innerHTML = "";
+    }
+    //删除行 
+    function DeleteRow(table) { 
+        for (var i = table.rows.length - 1; i > 0; i--) { 
+            var chkOrder = table.rows[i].cells[0].firstChild; 
+            if (chkOrder) { 
+                if (chkOrder.type = "CHECKBOX") { 
+                    if (chkOrder.checked) { 
+                        table.deleteRow(i); 
+                    } 
+                } 
+            } 
+        }
+    }
+        
+        
+        
+    //提取表格所有值,JSON格式，可以将该值赋予一个隐藏的input标签，提交表单至后台进行处理 
+    function GetTableData() {    
+        var table = document.getElementById("filedTable");     
+        var Obj = {Mark:"",fundname:"",numbermember:"",fundamount:""};      
+        var datamodeldata = JSON.parse("{\"data\":[]}");      
+        for(var i=1;i<table.rows.length;i++){ 
+            var Obj = new Object(); 
+            Obj.Mark = table.rows[i].cells[0].id; 
+            Obj.fundname = table.rows[i].cells[1].innerHTML; 
+            Obj.numberinto = table.rows[i].cells[2].innerHTML; 
+            Obj.amountinto = table.rows[i].cells[3].innerHTML; 
+
+            datamodeldata.data.push(Obj);     
+        }     
+        return JSON.stringify(datamodeldata).toString();
+    }     
+        
+        
+    //本表格数据为数据库字段数据
+    //判断字段名称是否重复
+    function ColumnnameDuplicate(){
+        var table = document.getElementById("filedTable"); 
+        var array = new Array();
+        var b = false; 
+        for(var i=1;i<table.rows.length;i++){ 
+            array.push(table.rows[i].cells[1].innerHTML); 
+        } 
+        var nary=array.sort(); 
+        for(var i=0;i<array.length;i++){ 
+            if (nary[i]==nary[i+1]){ 
+                b = true; 
+            } 
+        } 
+        return b;
+    }
+        
+        
+    //提交表格时，判断是否存在数据行
+    function TableRows(){
+        var table = document.getElementById("filedTable");
+        var length = table.rows.length;
+        var b = false;
+        if(length>=2){
+            b=true;
+        }
+        return b;
+    }
+        
+        
+    //判断字段名称是否为空
+    function ColumunameIsnull(){
+        var table = document.getElementById("filedTable"); 
+        var b = false; 
+        for(var i=1;i<table.rows.length;i++){ 
+            if(table.rows[i].cells[1].innerHTML==""){ 
+                b = true; 
+            } 
+        } 
+        return b;
+    }
+    
+</script>
+</html>

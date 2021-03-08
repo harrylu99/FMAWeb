@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <style type="text/css">
+	
+	/*设置 a 标签的css样式*/
+	.page-normal a{
+		border: 1px;
+		padding: 5px 7px;       
+		margin-left: 20px;/*设置标签 a 之间的间隔*/
+		text-decoration: none;/*去除页码数字下面的下划线*/
+	}
+
+	.page-normal{       
+		text-align: center;
+	}
+	
+	/*进行代码优化，将不同css样式中共有的属性放在一起，有助于提高运行效率*/
+	.page-normal a, .page-normal a:hover, .page-normal .page-prev, .page-normal .page-current{
+		border: 1px;
+		padding: 5px 7px;
+	}
+	
+</style>
+    
+    
+    <title>Active Table 3</title>
+</head>
+<body>
+
+        
+        
+    <h1  class="text-success text-center">Annual return for KiwiSaver schemes (other than default KiwiSaver schemes)
+    </h1>
+    <h2 class="text-success text-center">Table 3—Age and gender profile of members</h2>
+    
+ <form action="" method='POST' role="form"  class="form-horizontal" id='bookForm'>
+       <h3 class="text-success text-center">Age at end of annual return year</h3>
+        
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Age group one: 17 and under</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="onefemale" name="onefemale" onkeyup="onesum(this)  ,femalesum(this)" placeholder="please enter number of female" size="30" >
+                </div>
+             <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="onemale" name="onemale" onkeyup="onesum(this),malesum(this)" placeholder="please enter number of male" size="30" >
+                  </div>
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="oneunknown" name="oneunknown" onkeyup="onesum(this),unknownsum(this)" placeholder="please enter number of unknown gender" size="50" >
+                  </div>
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="onetotal" name="onetotal" onkeyup="sum(this);" placeholder="please enter total number of members in this age group" size="50" >
+                    
+                  </div>
+                The total number should be：<input type='text' disabled="disabled" id='z' style="border:0px solid white; width:400px" />
+            </div>
+        </div>
+         <br>
+        
+
+     
+     
+     
+     <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Age group two: 18 - 25</label>
+             
+             <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="twofemale" name="twofemale" onkeyup="twosum(this) ,femalesum(this)" placeholder="please enter number of female" size="30" >
+                </div>
+             <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="twomale" name="twomale" onkeyup="twosum(this),malesum(this)" placeholder="please enter number of male" size="30" >
+                  </div>
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="twounknown" name="twounknown" onkeyup="twosum(this),unknownsum(this)" placeholder="please enter number of unknown gender" size="50" >
+                  </div>
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="twototal" name="twototal" onkeyup="sum(this);" placeholder="please enter total number of members in this age group" size="50" >
+                    
+                  </div>
+                The total number should be：<input type='text' disabled="disabled" id='y' style="border:0px solid white; width:400px" />
+                 <br>
+
+            </div>
+              
+        </div>
+         <br>
+     
+                  
+     
+     
+     <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Age group three: 26 - 30</label>
+             
+ <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="threefemale" name="threefemale" onkeyup="threesum(this),femalesum(this)" placeholder="please enter number of female" size="30" >
+                </div>
+             <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="threemale" name="threemale" onkeyup="threesum(this),malesum(this)" placeholder="please enter number of male" size="30" >
+                  </div>
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="threeunknown" name="threeunknown" onkeyup="threesum(this),unknownsum(this)" placeholder="please enter number of unknown gender" size="50" >
+                  </div>
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="threetotal" name="threetotal" onkeyup="sum(this);" placeholder="please enter total number of members in this age group" size="50" >
+                    
+                  </div>
+                The total number should be：<input type='text' disabled="disabled" id='x' style="border:0px solid white; width:400px" />
+            </div>
+              
+        </div>
+         <br>
+     
+     
+     
+     
+     
+     <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Age group four: 31-35</label>
+ <div class="col-sm-10">
+     
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="fourfemale" name="fourfemale" onkeyup="foursum(this),femalesum(this)" placeholder="please enter number of female" size="30" >
+                </div>
+             <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="fourmale" name="fourmale" onkeyup="foursum(this),malesum(this)" placeholder="please enter number of male" size="30" >
+                  </div>
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="fourunknown" name="fourunknown" onkeyup="foursum(this),unknownsum(this)" placeholder="please enter number of unknown gender" size="50" >
+                  </div>
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="fourtotal" name="fourtotal" onkeyup="sum(this);" placeholder="please enter total number of members in this age group" size="50" >
+                    
+                  </div>
+                The total number should be：<input type='text' disabled="disabled" id='w' style="border:0px solid white; width:400px" />
+            </div>
+              
+        </div>
+         <br>
+     
+     
+     
+     
+     <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Age group five: 36 - 40</label>
+             
+ <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="fivefemale" name="fivefemale" onkeyup="fivesum(this),femalesum(this)" placeholder="please enter number of female" size="30" >
+                </div>
+             <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="fivemale" name="fivemale" onkeyup="fivesum(this),malesum(this)" placeholder="please enter number of male" size="30" >
+                  </div>
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="fiveunknown" name="fiveunknown" onkeyup="fivesum(this),unknownsum(this)" placeholder="please enter number of unknown gender" size="50" >
+                  </div>
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="fivetoal" name="fivetoal" onkeyup="sum(this);" placeholder="please enter total number of members in this age group" size="50" >
+                    
+                  </div>
+                The total number should be：<input type='text' disabled="disabled" id='v' style="border:0px solid white; width:400px" />
+            </div>
+              
+        </div>
+         <br>
+     
+     
+     
+     
+     
+     <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Age group six: 41 - 45</label>
+ 
+              <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="sixfemale" name="sixfemale" onkeyup="sixsum(this),femalesum(this)" placeholder="please enter number of female" size="30" >
+                </div>
+             <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="sixmale" name="sixmale" onkeyup="sixsum(this),malesum(this)" placeholder="please enter number of male" size="30" >
+                  </div>
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="sixunknown" name="sixunknown" onkeyup="sixsum(this),unknownsum(this)" placeholder="please enter number of unknown gender" size="50" >
+                  </div>
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="sixtotal" name="sixtotal" onkeyup="sum(this);" placeholder="please enter total number of members in this age group" size="50" >
+                    
+                  </div>
+                The total number should be：<input type='text' disabled="disabled" id='u' style="border:0px solid white; width:400px" />
+            </div>
+              
+        </div>
+         <br>
+     
+     
+     
+     
+     
+     <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Age group seven: 46 - 50</label>
+             
+ <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="sevenfemale" name="sevenfemale" onkeyup="sevensum(this),femalesum(this)" placeholder="please enter number of female" size="30" >
+                </div>
+             <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="sevenmale" name="sevenmale" onkeyup="sevensum(this),malesum(this)" placeholder="please enter number of male" size="30" >
+                  </div>
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="sevenunknown" name="sevenunknown" onkeyup="sevensum(this),unknownsum(this)" placeholder="please enter number of unknown gender" size="50" >
+                  </div>
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="seventotal" name="seventotal" onkeyup="sum(this);" placeholder="please enter total number of members in this age group" size="50" >
+                    
+                  </div>
+                The total number should be：<input type='text' disabled="disabled" id='t' style="border:0px solid white; width:400px" />
+            </div>
+              
+        </div>
+         <br>
+     
+     
+     
+     
+     
+     <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Age group eight: 51 - 55</label>
+             
+ <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="eightfemale" name="eightfemale" onkeyup="eightsum(this),femalesum(this)" placeholder="please enter number of female" size="30" >
+                </div>
+             <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="eightmale" name="eightmale" onkeyup="eightsum(this),malesum(this)" placeholder="please enter number of male" size="30" >
+                  </div>
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="eightunknown" name="eightunknown" onkeyup="eightsum(this),unknownsum(this)" placeholder="please enter number of unknown gender" size="50" >
+                  </div>
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="eighttotal" name="eighttotal" onkeyup="sum(this);" placeholder="please enter total number of members in this age group" size="50" >
+                    
+                  </div>
+                The total number should be：<input type='text' disabled="disabled" id='s' style="border:0px solid white; width:400px" />
+            </div>
+              
+        </div>
+         <br>
+     
+     
+     
+     
+     
+     <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Age group nine: 56 - 60</label>
+             
+ <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="ninefemale" name="ninefemale" onkeyup="ninesum(this),femalesum(this)" placeholder="please enter number of female" size="30" >
+                </div>
+             <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="ninemale" name="ninemale" onkeyup="ninesum(this),malesum(this)" placeholder="please enter number of male" size="30" >
+                  </div>
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="nineunknown" name="nineunknown" onkeyup="ninesum(this),unknownsum(this)" placeholder="please enter number of unknown gender" size="50" >
+                  </div>
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="ninetotal" name="ninetotal" onkeyup="sum(this);" placeholder="please enter total number of members in this age group" size="50" >
+                    
+                  </div>
+                The total number should be：<input type='text' disabled="disabled" id='r' style="border:0px solid white; width:400px" />
+            </div>
+              
+        </div>
+         <br>
+     
+     
+     
+     
+     <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Age group ten: 61 - 65</label>
+             
+ <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="tenfemale" name="tenfemale" onkeyup="tensum(this),femalesum(this)" placeholder="please enter number of female" size="30" >
+                </div>
+             <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="tenmale" name="tenmale" onkeyup="tensum(this),malesum(this)" placeholder="please enter number of male" size="30" >
+                  </div>
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="tenunknown" name="tenunknown" onkeyup="tensum(this),unknownsum(this)" placeholder="please enter number of unknown gender" size="50" >
+                  </div>
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="tentotal" name="tentotal" onkeyup="sum(this);" placeholder="please enter total number of members in this age group" size="50" >
+                    
+                  </div>
+                The total number should be：<input type='text' disabled="disabled" id='q' style="border:0px solid white; width:400px" />
+            </div>
+              
+        </div>
+         <br>
+     
+     
+     
+     
+     
+     
+     <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Age group eleven: 66 - 70</label>
+             
+ <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="elevenfemale" name="elevenfemale" onkeyup="elevensum(this),femalesum(this)" placeholder="please enter number of female" size="30" >
+                </div>
+             <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="elevenmale" name="elevenmale" onkeyup="elevensum(this),malesum(this)" placeholder="please enter number of male" size="30" >
+                  </div>
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="elevenunknown" name="elevenunknown" onkeyup="elevensum(this),unknownsum(this)" placeholder="please enter number of unknown gender" size="50" >
+                  </div>
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="eleventotal" name="eleventotal" onkeyup="sum(this);" placeholder="please enter total number of members in this age group" size="50" >
+                    
+                  </div>
+                The total number should be：<input type='text' disabled="disabled" id='p' style="border:0px solid white; width:400px" />
+            </div>
+              
+        </div>
+         <br>
+     
+     
+     
+     
+     
+     <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Age group twelve: 71 - 75</label>
+ <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="twelvefemale" name="twelvefemale" onkeyup="twelvesum(this),femalesum(this)" placeholder="please enter number of female" size="30" >
+                </div>
+             <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="twelvemale" name="twelvemale" onkeyup="twelvesum(this),malesum(this)" placeholder="please enter number of male" size="30" >
+                  </div>
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="twelveunknown" name="twelveunknown" onkeyup="twelvesum(this),unknownsum(this)" placeholder="please enter number of unknown gender" size="50" >
+                  </div>
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="twelvetotal" name="twelvetotal" onkeyup="sum(this);" placeholder="please enter total number of members in this age group" size="50" >
+                    
+                  </div>
+                The total number should be：<input type='text' disabled="disabled" id='o' style="border:0px solid white; width:400px" />
+            </div>
+              
+        </div>
+         <br>
+     
+     
+     
+     
+     
+     
+     <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Age group thirteen: 76 - 80</label>
+             
+ <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="thirteenfemale" name="thirteenfemale" onkeyup="thirteensum(this),femalesum(this)" placeholder="please enter number of female" size="30" >
+                </div>
+             <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="thirteenmale" name="thirteenmale" onkeyup="thirteensum(this),malesum(this)" placeholder="please enter number of male" size="30" >
+                  </div>
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="thirteenunknown" name="thirteenunknown" onkeyup="thirteensum(this),unknownsum(this)" placeholder="please enter number of unknown gender" size="50" >
+                  </div>
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="thirteentotal" name="thirteentotal" onkeyup="sum(this);" placeholder="please enter total number of members in this age group" size="50" >
+                    
+                  </div>
+                The total number should be：<input type='text' disabled="disabled" id='n' style="border:0px solid white; width:400px" />
+            </div>
+              
+        </div>
+         <br>
+     
+     
+     
+     
+     
+     <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Age group fourteen: 81 - 85</label>
+             
+ <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="fourteenfemale" name="fourteenfemale" onkeyup="fourteensum(this),femalesum(this)" placeholder="please enter number of female" size="30" >
+                </div>
+             <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="fourteenmale" name="fourteenmale" onkeyup="fourteensum(this),malesum(this)" placeholder="please enter number of male" size="30" >
+                  </div>
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="fourteenunknown" name="fourteenunknown" onkeyup="fourteensum(this),unknownsum(this)" placeholder="please enter number of unknown gender" size="50" >
+                  </div>
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="fourteentotal" name="fourteentotal" onkeyup="sum(this);" placeholder="please enter total number of members in this age group" size="50" >
+                    
+                  </div>
+                The total number should be：<input type='text' disabled="disabled" id='m' style="border:0px solid white; width:400px" />
+            </div>
+              
+        </div>
+         <br>
+     
+     
+     
+     
+     
+     <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Age group fifteen: 86 and over</label>
+             
+ <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="fifteenfemale" name="fifteenfemale" onkeyup="fifteensum(this),femalesum(this)" placeholder="please enter number of female" size="50" >
+                </div>
+             <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="fifteenmale" name="fifteenmale" onkeyup="fifteensum(this),malesum(this)" placeholder="please enter number of male" size="50" >
+                  </div>
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="fifteenunknown" name="fifteenunknown" onkeyup="fifteensum(this),unknownsum(this)" placeholder="please enter number of unknown gender" size="50" >
+                  </div>
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="fifteentotal" name="fifteentotal" onkeyup="sum(this);" placeholder="please enter total number of members in this age group" size="50" >
+                    
+                  </div>
+                The total number should be：<input type='text' disabled="disabled" id='l' style="border:0px solid white; width:400px" />
+            </div>
+              
+        </div>
+         <br>
+     
+     
+     
+     
+     
+     <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Age group sixteen: unknown age</label>
+             
+ <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="sixteenfemale" name="sixteenfemale" onkeyup="sixteensum(this),femalesum(this)" placeholder="please enter number of female" size="30" >
+                </div>
+             <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="sixteenmale" name="sixteenmale" onkeyup="sixteensum(this),malesum(this)" placeholder="please enter number of male" size="30" >
+                  </div>
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="sixteenunknown" name="sixteenunknown" onkeyup="sixteensum(this),unknownsum(this)" placeholder="please enter number of unknown gender" size="50" >
+                  </div>
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="sixteentotal" name="sixteentotal" onkeyup="sum(this);" placeholder="please enter total number of members in this age group" size="50" >
+                    
+                  </div>
+                The total number should be：<input type='text' disabled="disabled" id='k' style="border:0px solid white; width:400px" />
+            </div>
+              
+        </div>
+         <br>
+     
+     
+     
+     
+     
+
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Totals: </label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+
+        <input type="text" class="form-control" id="totalfemale" name="totalfemale" onkeyup="totalsum(this)" placeholder="please enter total numbers of female" size="50" >
+                </div>
+                <br>
+                The total number of female should be：<input type='text' disabled="disabled" id='fe' style="border:0px solid white; width:400px" />
+             <div style="width:200px;text-align:right;">
+        <input type="text" class="form-control" id="totalmale" name="totalmale" onkeyup="totalsum(this)" placeholder="please enter total numbers of female" size="50" >
+                  </div>
+                                <br>
+                The total number of male should be：<input type='text' disabled="disabled" id='ma' style="border:0px solid white; width:400px" />
+                <div style="width:200px;text-align:right;">
+        <input type="text" class="form-control" id="totalunknown" name="totalunknown" onkeyup="totalsum(this)" placeholder="please enter total numbers of unknown gender" size="50" >
+                  </div>
+                          <br>
+                The total number of unkown gender should be：<input type='text' disabled="disabled" id='un' style="border:0px solid white; width:400px" />
+                <div style="width:200px;text-align:right;">
+        <input type="text" class="form-control" id="totalmember" name="totalmember" placeholder="please enter total numbers of member" size="50" >
+                  </div>
+                <br>
+                The total number of member should be：<input type='text' disabled="disabled" id='to' style="border:0px solid white; width:400px" />
+                
+            </div>
+        </div>
+         <br>
+     
+     
+     
+     
+     
+        
+        
+        <li>
+             <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10"><a href="Activefour.html">
+            <button type="button" class="btn btn-success" id="submitBtn">Save and Next</button></a>
+                 </div>
+            </div>
+        </li>
+     
+                     <div class="page-normal">
+	<a href="Activetwo.html">&lt;</a>
+	<a href="Activeone.html">1</a>
+        <a href="Activetwo.html">2</a>                 
+	<span class="page-current">3</span>
+	<a href="Activefour.html">4</a>
+	<a href="Activefive.html">5</a>
+	<a href="Activesix.html">6</a>
+	<a href="Activeseven.html">7</a>
+	<a href="Activeeight.html">8</a>
+	<a href="Activefour.html">&gt;</a>
+</div>
+        
+        
+        
+    </form>
+</body>
+    
+    
+<script>
+
+    
+function onesum(obj) {
+var a = document.getElementById("onefemale");
+var b = document.getElementById("onemale");
+var c = document.getElementById("oneunknown");
+
+if(a.value!='')
+{
+z.value=parseInt(a.value);
+
+}
+if(a.value!=''&&b.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value);
+
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value);
+}
+
+else z.value = "Please check if you enter all number that we required.";
+}
+    
+    
+    function twosum(obj) {
+var a = document.getElementById("twofemale");
+var b = document.getElementById("twomale");
+var c = document.getElementById("twounknown");
+
+if(a.value!='')
+{
+y.value=parseInt(a.value);
+
+}
+if(a.value!=''&&b.value!='')
+{
+y.value=parseInt(a.value)+parseInt(b.value);
+
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+y.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value);
+}
+
+else y.value = "Please check if you enter all number that we required.";
+}
+    
+    
+    
+    function threesum(obj) {
+var a = document.getElementById("threefemale");
+var b = document.getElementById("threemale");
+var c = document.getElementById("threeunknown");
+
+if(a.value!='')
+{
+x.value=parseInt(a.value);
+
+}
+if(a.value!=''&&b.value!='')
+{
+x.value=parseInt(a.value)+parseInt(b.value);
+
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+x.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value);
+}
+
+else x.value = "Please check if you enter all number that we required.";
+}
+    
+    
+    
+    function foursum(obj) {
+var a = document.getElementById("fourfemale");
+var b = document.getElementById("fourmale");
+var c = document.getElementById("fourunknown");
+
+if(a.value!='')
+{
+w.value=parseInt(a.value);
+
+}
+if(a.value!=''&&b.value!='')
+{
+w.value=parseInt(a.value)+parseInt(b.value);
+
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+w.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value);
+}
+
+else w.value = "Please check if you enter all number that we required.";
+}
+    
+    
+    
+    
+    function fivesum(obj) {
+var a = document.getElementById("fivefemale");
+var b = document.getElementById("fivemale");
+var c = document.getElementById("fiveunknown");
+
+if(a.value!='')
+{
+v.value=parseInt(a.value);
+
+}
+if(a.value!=''&&b.value!='')
+{
+v.value=parseInt(a.value)+parseInt(b.value);
+
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+v.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value);
+}
+
+else v.value = "Please check if you enter all number that we required.";
+}
+    
+    
+    
+    
+    
+    function sixsum(obj) {
+var a = document.getElementById("sixfemale");
+var b = document.getElementById("sixmale");
+var c = document.getElementById("sixunknown");
+
+if(a.value!='')
+{
+u.value=parseInt(a.value);
+
+}
+if(a.value!=''&&b.value!='')
+{
+u.value=parseInt(a.value)+parseInt(b.value);
+
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+u.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value);
+}
+
+else u.value = "Please check if you enter all number that we required.";
+}
+    
+    
+    
+    
+    function sevensum(obj) {
+var a = document.getElementById("sevenfemale");
+var b = document.getElementById("sevenmale");
+var c = document.getElementById("sevenunknown");
+
+if(a.value!='')
+{
+t.value=parseInt(a.value);
+
+}
+if(a.value!=''&&b.value!='')
+{
+t.value=parseInt(a.value)+parseInt(b.value);
+
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+t.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value);
+}
+
+else t.value = "Please check if you enter all number that we required.";
+}
+    
+    
+    
+    
+    
+    
+    function eightsum(obj) {
+var a = document.getElementById("eightfemale");
+var b = document.getElementById("eightmale");
+var c = document.getElementById("eightunknown");
+
+if(a.value!='')
+{
+s.value=parseInt(a.value);
+
+}
+if(a.value!=''&&b.value!='')
+{
+s.value=parseInt(a.value)+parseInt(b.value);
+
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+s.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value);
+}
+
+else s.value = "Please check if you enter all number that we required.";
+}
+    
+    
+    function ninesum(obj) {
+var a = document.getElementById("ninefemale");
+var b = document.getElementById("ninemale");
+var c = document.getElementById("nineunknown");
+
+if(a.value!='')
+{
+r.value=parseInt(a.value);
+
+}
+if(a.value!=''&&b.value!='')
+{
+r.value=parseInt(a.value)+parseInt(b.value);
+
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+r.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value);
+}
+
+else r.value = "Please check if you enter all number that we required.";
+}
+    
+    
+    
+    function tensum(obj) {
+var a = document.getElementById("tenfemale");
+var b = document.getElementById("tenmale");
+var c = document.getElementById("tenunknown");
+
+if(a.value!='')
+{
+q.value=parseInt(a.value);
+
+}
+if(a.value!=''&&b.value!='')
+{
+q.value=parseInt(a.value)+parseInt(b.value);
+
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+q.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value);
+}
+
+else q.value = "Please check if you enter all number that we required.";
+}
+    
+    
+    
+    function elevensum(obj) {
+var a = document.getElementById("elevenfemale");
+var b = document.getElementById("elevenmale");
+var c = document.getElementById("elevenunknown");
+
+if(a.value!='')
+{
+p.value=parseInt(a.value);
+
+}
+if(a.value!=''&&b.value!='')
+{
+p.value=parseInt(a.value)+parseInt(b.value);
+
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+p.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value);
+}
+
+else p.value = "Please check if you enter all number that we required.";
+}
+    
+    
+    
+    
+    function twelvesum(obj) {
+var a = document.getElementById("twelvefemale");
+var b = document.getElementById("twelvemale");
+var c = document.getElementById("twelveunknown");
+
+if(a.value!='')
+{
+o.value=parseInt(a.value);
+
+}
+if(a.value!=''&&b.value!='')
+{
+o.value=parseInt(a.value)+parseInt(b.value);
+
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+o.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value);
+}
+
+else o.value = "Please check if you enter all number that we required.";
+}
+    
+    
+    
+    function thirteensum(obj) {
+var a = document.getElementById("thirteenfemale");
+var b = document.getElementById("thirteenmale");
+var c = document.getElementById("thirteenunknown");
+
+if(a.value!='')
+{
+n.value=parseInt(a.value);
+
+}
+if(a.value!=''&&b.value!='')
+{
+n.value=parseInt(a.value)+parseInt(b.value);
+
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+n.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value);
+}
+
+else n.value = "Please check if you enter all number that we required.";
+}
+    
+    
+function fourteensum(obj) {
+var a = document.getElementById("fourteenfemale");
+var b = document.getElementById("fourteenmale");
+var c = document.getElementById("fourteenunknown");
+
+if(a.value!='')
+{
+m.value=parseInt(a.value);
+
+}
+if(a.value!=''&&b.value!='')
+{
+m.value=parseInt(a.value)+parseInt(b.value);
+
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+m.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value);
+}
+
+else m.value = "Please check if you enter all number that we required.";
+}
+    
+
+    
+    
+    function fifteensum(obj) {
+var a = document.getElementById("fifteenfemale");
+var b = document.getElementById("fifteenmale");
+var c = document.getElementById("fifteenunknown");
+
+if(a.value!='')
+{
+l.value=parseInt(a.value);
+
+}
+if(a.value!=''&&b.value!='')
+{
+l.value=parseInt(a.value)+parseInt(b.value);
+
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+l.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value);
+}
+
+else l.value = "Please check if you enter all number that we required.";
+}
+    
+    
+    
+    function sixteensum(obj) {
+var a = document.getElementById("sixteenfemale");
+var b = document.getElementById("sixteenmale");
+var c = document.getElementById("sixteenunknown");
+
+if(a.value!='')
+{
+k.value=parseInt(a.value);
+
+}
+if(a.value!=''&&b.value!='')
+{
+k.value=parseInt(a.value)+parseInt(b.value);
+
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+k.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value);
+}
+
+else k.value = "Please check if you enter all number that we required.";
+}
+    
+   
+    
+ 
+    
+    
+    
+    
+function femalesum(obj){
+        var a = document.getElementById("onefemale");
+        var b = document.getElementById("twofemale");
+        var c = document.getElementById("threefemale");
+        var d = document.getElementById("fourfemale");
+        var e = document.getElementById("fivefemale");
+        var f = document.getElementById("sixfemale");
+        var g = document.getElementById("sevenfemale");
+        var h = document.getElementById("eightfemale");
+        var i = document.getElementById("ninefemale");
+        var j = document.getElementById("tenfemale");
+        var k = document.getElementById("elevenfemale");
+        var l = document.getElementById("twelvefemale");
+        var m = document.getElementById("thirteenfemale");
+        var n = document.getElementById("fourteenfemale");
+        var o = document.getElementById("fifteenfemale");
+        var p = document.getElementById("sixteenfemale");
+
+    
+    
+    
+if(a.value!='')
+{
+fe.value=parseInt(a.value);
+}
+if(a.value!=''&&b.value!='')
+{
+fe.value=parseInt(a.value)+parseInt(b.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+fe.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!='')
+{
+fe.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value);
+}       
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!='')
+{
+fe.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value);
+}       
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!='')
+{
+fe.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value);
+}        
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!='')
+{
+fe.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!='')
+{
+fe.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!='')
+{
+fe.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!='')
+{
+fe.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!=''&&k.value!='')
+{
+fe.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value)+parseInt(k.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!=''&&k.value!=''&&l.value!='')
+{
+fe.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value)+parseInt(k.value)+parseInt(l.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!=''&&k.value!=''&&l.value!=''&&m.value!='')
+{
+fe.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value)+parseInt(k.value)+parseInt(l.value)+parseInt(m.value);
+}    
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!=''&&k.value!=''&&l.value!=''&&m.value!=''&&n.value!='')
+{
+fe.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value)+parseInt(k.value)+parseInt(l.value)+parseInt(m.value)+parseInt(n.value);
+}      
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!=''&&k.value!=''&&l.value!=''&&m.value!=''&&n.value!=''&&o.value!='')
+{
+fe.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value)+parseInt(k.value)+parseInt(l.value)+parseInt(m.value)+parseInt(n.value)+parseInt(o.value);
+}  
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!=''&&k.value!=''&&l.value!=''&&m.value!=''&&n.value!=''&&o.value!=''&&p.value!='')
+{
+fe.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value)+parseInt(k.value)+parseInt(l.value)+parseInt(m.value)+parseInt(n.value)+parseInt(o.value)+parseInt(p.value);
+}      
+
+else fe.value = "Please check if you enter all number that we required.";
+}
+    
+    
+    
+    
+    
+function malesum(obj){
+        var a = document.getElementById("onemale");
+        var b = document.getElementById("twomale");
+        var c = document.getElementById("threemale");
+        var d = document.getElementById("fourmale");
+        var e = document.getElementById("fivemale");
+        var f = document.getElementById("sixmale");
+        var g = document.getElementById("sevenmale");
+        var h = document.getElementById("eightmale");
+        var i = document.getElementById("ninemale");
+        var j = document.getElementById("tenmale");
+        var k = document.getElementById("elevenmale");
+        var l = document.getElementById("twelvemale");
+        var m = document.getElementById("thirteenmale");
+        var n = document.getElementById("fourteenmale");
+        var o = document.getElementById("fifteenmale");
+        var p = document.getElementById("sixteenmale");
+
+    
+    
+    
+if(a.value!='')
+{
+ma.value=parseInt(a.value);
+}
+if(a.value!=''&&b.value!='')
+{
+ma.value=parseInt(a.value)+parseInt(b.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+ma.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!='')
+{
+ma.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value);
+}       
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!='')
+{
+ma.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value);
+}       
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!='')
+{
+ma.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value);
+}        
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!='')
+{
+ma.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!='')
+{
+ma.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!='')
+{
+ma.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!='')
+{
+ma.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!=''&&k.value!='')
+{
+ma.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value)+parseInt(k.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!=''&&k.value!=''&&l.value!='')
+{
+ma.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value)+parseInt(k.value)+parseInt(l.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!=''&&k.value!=''&&l.value!=''&&m.value!='')
+{
+ma.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value)+parseInt(k.value)+parseInt(l.value)+parseInt(m.value);
+}    
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!=''&&k.value!=''&&l.value!=''&&m.value!=''&&n.value!='')
+{
+ma.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value)+parseInt(k.value)+parseInt(l.value)+parseInt(m.value)+parseInt(n.value);
+}      
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!=''&&k.value!=''&&l.value!=''&&m.value!=''&&n.value!=''&&o.value!='')
+{
+ma.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value)+parseInt(k.value)+parseInt(l.value)+parseInt(m.value)+parseInt(n.value)+parseInt(o.value);
+}  
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!=''&&k.value!=''&&l.value!=''&&m.value!=''&&n.value!=''&&o.value!=''&&p.value!='')
+{
+ma.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value)+parseInt(k.value)+parseInt(l.value)+parseInt(m.value)+parseInt(n.value)+parseInt(o.value)+parseInt(p.value);
+}      
+
+else ma.value = "Please check if you enter all number that we required.";
+}
+    
+    
+    
+    
+    
+    
+    
+    
+function unknownsum(obj){
+        var a = document.getElementById("oneunknown");
+        var b = document.getElementById("twounknown");
+        var c = document.getElementById("threeunknown");
+        var d = document.getElementById("fourunknown");
+        var e = document.getElementById("fiveunknown");
+        var f = document.getElementById("sixunknown");
+        var g = document.getElementById("sevenunknown");
+        var h = document.getElementById("eightunknown");
+        var i = document.getElementById("nineunknown");
+        var j = document.getElementById("tenunknown");
+        var k = document.getElementById("elevenunknown");
+        var l = document.getElementById("twelveunknown");
+        var m = document.getElementById("thirteenunknown");
+        var n = document.getElementById("fourteenunknown");
+        var o = document.getElementById("fifteenunknown");
+        var p = document.getElementById("sixteenunknown");
+
+    
+    
+    
+if(a.value!='')
+{
+un.value=parseInt(a.value);
+}
+if(a.value!=''&&b.value!='')
+{
+un.value=parseInt(a.value)+parseInt(b.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+un.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!='')
+{
+un.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value);
+}       
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!='')
+{
+un.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value);
+}       
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!='')
+{
+un.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value);
+}        
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!='')
+{
+un.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!='')
+{
+un.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!='')
+{
+un.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!='')
+{
+un.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!=''&&k.value!='')
+{
+un.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value)+parseInt(k.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!=''&&k.value!=''&&l.value!='')
+{
+un.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value)+parseInt(k.value)+parseInt(l.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!=''&&k.value!=''&&l.value!=''&&m.value!='')
+{
+un.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value)+parseInt(k.value)+parseInt(l.value)+parseInt(m.value);
+}    
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!=''&&k.value!=''&&l.value!=''&&m.value!=''&&n.value!='')
+{
+un.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value)+parseInt(k.value)+parseInt(l.value)+parseInt(m.value)+parseInt(n.value);
+}      
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!=''&&k.value!=''&&l.value!=''&&m.value!=''&&n.value!=''&&o.value!='')
+{
+un.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value)+parseInt(k.value)+parseInt(l.value)+parseInt(m.value)+parseInt(n.value)+parseInt(o.value);
+}  
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!=''&&j.value!=''&&k.value!=''&&l.value!=''&&m.value!=''&&n.value!=''&&o.value!=''&&p.value!='')
+{
+un.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value)+parseInt(j.value)+parseInt(k.value)+parseInt(l.value)+parseInt(m.value)+parseInt(n.value)+parseInt(o.value)+parseInt(p.value);
+}      
+
+else un.value = "Please check if you enter all number that we required.";
+}
+    
+    
+    
+    
+    
+function totalsum(obj) {
+var a = document.getElementById("totalfemale");
+var b = document.getElementById("totalmale");
+var c = document.getElementById("totalunknown");
+
+if(a.value!='')
+{
+to.value=parseInt(a.value);
+
+}
+if(a.value!=''&&b.value!='')
+{
+to.value=parseInt(a.value)+parseInt(b.value);
+
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+to.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value);
+}
+
+else to.value = "Please check if you enter all number that we required.";
+}
+    
+    
+    
+</script>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <style type="text/css">
+	
+	/*设置 a 标签的css样式*/
+	.page-normal a{
+		border: 1px;
+		padding: 5px 7px;       
+		margin-left: 20px;/*设置标签 a 之间的间隔*/
+		text-decoration: none;/*去除页码数字下面的下划线*/
+	}
+
+	.page-normal{       
+		text-align: center;
+	}
+	
+	/*进行代码优化，将不同css样式中共有的属性放在一起，有助于提高运行效率*/
+	.page-normal a, .page-normal a:hover, .page-normal .page-prev, .page-normal .page-current{
+		border: 1px;
+		padding: 5px 7px;
+	}
+	
+</style>
+    
+    
+    <title>Active Table 4</title>
+</head>
+<body>
+    <h1  class="text-success text-center">Annual return for KiwiSaver schemes (other than default KiwiSaver schemes)
+    </h1>
+    <h2 class="text-success text-center">Table 4—Summary of non-contributing members (not on section 104 contribution holidays)</h2>
+    
+    <form action="" method='POST' role="form"  class="form-horizontal" id='bookForm'>
+        
+        
+   
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">1. Number of non-contributing members (not on <a href="section104.html"  target="_blank">section 104</a> contribution holidays) at start of annual return year</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="startofyearnumber" name="startofyearnumber" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="startofyearassets" name="startofyearassets" placeholder="please enter scheme assets held for those members ($)" size="50" >
+                  </div>
+            </div>
+        </div>
+         <br>
+        
+         <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">2. Number of non-contributing members (not on <a href="section104.html"  target="_blank">section 104</a> contribution holidays) at end of annual return year</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="endofyearnumber" name="endofyearnumber" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="endofyearassets" name="endofyearassets" placeholder="please enter scheme assets held for those members ($)" size="50" >
+                  </div>
+            </div>
+        </div>
+         <br>
+        
+         
+
+                
+        
+        
+        
+        
+        <li>
+             <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10"><a href="Activefive.html">
+            <button type="button" class="btn btn-success" id="submitBtn">Save and Next</button></a>
+                 </div>
+            </div>
+        </li>
+        
+        
+    <div class="page-normal">
+	<a href="Activethree.html">&lt;</a>
+	<a href="Activeone.html">1</a>
+    <a href="Activetwo.html">2</a> 
+    <a href="Activethree.html">3</a>
+	<span class="page-current">4</span>
+	<a href="Activefive.html">5</a>
+	<a href="Activesix.html">6</a>
+	<a href="Activeseven.html">7</a>
+	<a href="Activeeight.html">8</a>
+	<a href="Activefive.html">&gt;</a>
+</div>
+        
+        
+    </form>
+</body>
+    
+    
+<script>
+
+    
+    
+    
+    
+    
+    
+</script>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 51</title>
+</head>
+<body>
+
+    <br> <br>
+    <h2 class="text-success text-center">Section 51</h2>
+    <br>
+    
+
+   51 Completion of allocation to default KiwiSaver scheme if person does not choose his or her own KiwiSaver scheme
+        <br>    <br>    <br>
+(1)
+This section and section 52 apply, at the final allocation date specified in subsection (4), to a person (A) who has been provisionally allocated under section 50 if the Commissioner has not been notified by that date by a provider that A has applied to become a member of a KiwiSaver scheme.
+        <br>    <br>
+(1B)
+Despite subsection (1), subsections (4) and (5) do not apply if section 50(4)﻿(b) or (ba) applies. Instead, the allocation under section 50(3) is treated as completed on the day on which it occurs.
+        <br>    <br>
+(2)
+The Commissioner must give notice to A that the allocation of A is now completed as per the provisional allocation.
+        <br>    <br>
+(3)
+The Commissioner must give notice to the provider of the default KiwiSaver scheme that A has been allocated to the scheme, and A’s name, address, date of birth (if known to the Commissioner), tax file number, and any other personal information that the Commissioner considers relevant.
+        <br>    <br>
+(4)
+The final allocation date is,—
+        <br>    <br>
+(a)
+in the case of a person referred to in section 50(1)﻿(a) or (b), as soon as practicable after the 62nd day after the Commissioner receives the first contribution in respect of A:
+        <br>    <br>
+(b)
+in the case of a person referred to in section 50(4)﻿(a), (c), or (d), 62 days after the date on which the Commissioner receives that notice.
+        <br>    <br>
+(5)
+However, if a dispute in relation to Part 2 or 3 is underway under section 212 or 213 as at the date which would otherwise be the final allocation date, the final allocation date is the effective date of the notice given by the Commissioner to the effect that the dispute has been resolved or has otherwise been terminated.
+        <br>    <br>
+Section 51(1B): inserted, on 21 December 2010, by section 174(1) of the Taxation (GST and Remedial Matters) Act 2010 (2010 No 130).
+        <br>
+Section 51(1B): amended (with effect on 1 December 2014), on 23 March 2020, by section 13(1) of the Taxation (KiwiSaver, Student Loans, and Remedial Matters) Act 2020 (2020 No 5).
+        <br>
+Section 51(4)﻿(a): amended, on 1 April 2020, by section 13(2) of the Taxation (KiwiSaver, Student Loans, and Remedial Matters) Act 2020 (2020 No 5).
+        <br>
+Section 51(4)﻿(a): amended (with effect on 1 July 2007), on 19 December 2007, by section 44(1) of the Taxation (KiwiSaver) Act 2007 (2007 No 110).
+        <br>
+Section 51(4)﻿(b): amended, on 1 April 2020, by section 13(3) of the Taxation (KiwiSaver, Student Loans, and Remedial Matters) Act 2020 (2020 No 5).
+        <br>
+Section 51(4)﻿(b): amended, on 21 December 2010, by section 174(2) of the Taxation (GST and Remedial Matters) Act 2010 (2010 No 130).
+        <br>
+Section 51(5): amended (with effect on 1 July 2007), on 19 December 2007, by section 44(2) of the Taxation (KiwiSaver) Act 2007 (2007 No 110).
+        <br>
+    
+    
+   
+</body>
+    
+    
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+    document.getElementById('submitBtn').onclick=function(){
+        var name = document.getElementById('name').value;
+        var phone = document.getElementById('phone').value;
+        var pick_up_address = document.getElementById('pick_up_address').value;
+        var destination = document.getElementById('destination').value;
+        var pick_up_date = document.getElementById('pick_up_date').value;
+        var pick_up_time = document.getElementById('pick_up_time').value;
+        // name cannot be empty
+        if (name == '') {
+            alert("name cannot be empty");
+            return false;
+        }
+        // phone cannot be empty
+        if (phone == '') {
+            alert("phone cannot be empty");
+            return false;
+        }
+        // pick_up_address cannot be empty
+        if (pick_up_address == '') {
+            alert("pick up address cannot be empty");
+            return false;
+        }
+        // destination cannot be empty
+        if (destination == '') {
+            alert("destination cannot be empty");
+            return false;
+        }
+        if (pick_up_date == '') {
+            alert("pick up date cannot be empty");
+            return false;
+        }
+        if (pick_up_time == '') {
+            alert("pick up time cannot be empty");
+            return false;
+        }
+
+        // var data = $('#bookForm').serialize();
+        var data = "name="+name+"&phone="+phone+"&pick_up_address="+pick_up_address+"&destination="+destination+"&pick_up_date="+pick_up_date+"&pick_up_time="+pick_up_time
+        var url = "?action=book";
+        var xmlhttp;
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp=new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState==4) {
+                if (xmlhttp.status==200) {
+                    var data = JSON.parse(xmlhttp.responseText);
+                    if (data.error_no == 0) {
+                        alert(data.message);
+                        window.location.reload();
+                    } else {
+                        alert(data.message);
+                    }
+                } else {
+                    alert('error');
+                }
+            }
+        }
+        xmlhttp.open("POST", url, true);
+        xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        xmlhttp.send(data);
+    };
+});
+</script>
+</html>

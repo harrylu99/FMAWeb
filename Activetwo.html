@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <style type="text/css">
+	
+	/*设置 a 标签的css样式*/
+	.page-normal a{
+		border: 1px;
+		padding: 5px 7px;       
+		margin-left: 20px;/*设置标签 a 之间的间隔*/
+		text-decoration: none;/*去除页码数字下面的下划线*/
+	}
+
+	.page-normal{       
+		text-align: center;
+	}
+	
+	/*进行代码优化，将不同css样式中共有的属性放在一起，有助于提高运行效率*/
+	.page-normal a, .page-normal a:hover, .page-normal .page-prev, .page-normal .page-current{
+		border: 1px;
+		padding: 5px 7px;
+	}
+	
+</style>
+    
+    
+    <title>Active Table 2</title>
+</head>
+<body>
+    <h1  class="text-success text-center">Annual return for KiwiSaver schemes (other than default KiwiSaver schemes)
+    </h1>
+    <h2 class="text-success text-center">Table 2—Membership summary</h2>
+    
+    <form action="" method='POST' role="form"  class="form-horizontal" id='bookForm'>
+        <div class="form-group">
+            <label for="text" class="col-sm-10">Number of contributing members at start of annual return year:  </label>
+            <div class="col-sm-10">
+ 
+    <input type="text" class="form-control" id="activetwoa" name="activetwoa" onkeyup="sum(this);" placeholder="A: number" size="30" >
+                
+            </div>
+        </div>
+        
+       <h3 class="text-success text-center">Categories of entries of members for annual return year</h3>
+        
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">1. New members (other than transfers from other schemes)</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+ 
+                    
+             <input type="text" class="form-control" id="newmember" name="newmember" onkeyup="entrysum(this);" placeholder="please enter number of members" size="30" >
+                    
+                </div>
+        </div>
+        </div>
+         <br>
+        
+                <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">2. Members restarting contributions at end of <a href="section104.html"  target="_blank">section 104</a> contribution holidays</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="endofholidaymember" name="endofholidaymember" onkeyup="entrysum(this);" placeholder="please enter number of members" size="30" >
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+                <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">3. Members restarting contributions after stopping contributions for any other reason</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="aftershoppingmember" name="aftershoppingmember" onkeyup="entrysum(this);" placeholder="please enter number of members" size="30" >
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+        
+                
+                <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">4. Members transferring into scheme from other KiwiSaver schemes</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="transfromotherkiwimember" name="transfromotherkiwimember" onkeyup="entrysum(this);" placeholder="please enter number of members" size="30" >
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+                <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">5. Members transferring into scheme from Australian superannuation schemes</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="transfromaumember" name="transfromaumember" onkeyup="entrysum(this);" placeholder="please enter number of members" size="30" >
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+        
+        
+        
+                
+                <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">6. Members transferring into scheme from other retirement schemes</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="transfromotherretirementmember" name="transfromotherretirementmember" onkeyup="entrysum(this);" placeholder="please enter number of members" size="30" >
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+                <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Total entries for annual return year</label>
+              
+              <br>
+               Should Be：<input type='text' disabled="disabled" id='x' style="border:0px solid white; width:400px" />
+              
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="activetwob" name="activetwob" onkeyup="sum(this);" placeholder="B: total entries" size="30" >
+        
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+        
+        
+               <h3 class="text-success text-center">Categories of membership exits for annual return year</h3>
+        
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">1. KiwiSaver end payment date exits</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="enddatemember" name="enddatemember" onkeyup="exitsum(this);" placeholder="please enter number of members" size="30" >
+                </div>
+        </div>
+        </div>
+         <br>
+        
+                <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">2. Deaths</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="deathmember" name="deathmember" onkeyup="exitsum(this);" placeholder="please enter number of members" size="30" >
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+                <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">3. Permanent emigration exits</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="permanentemigrationmember" name="permanentemigrationmember" onkeyup="exitsum(this);" placeholder="please enter number of members" size="30" >
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+        
+                
+                <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">4. Transfers out of scheme into other KiwiSaver schemes</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="transintootherkiwimember" name="transintootherkiwimember" onkeyup="exitsum(this);" placeholder="please enter number of members" size="30" >
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+                <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">5. Transfers out of scheme into Australian superannuation schemes</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="transintoaumember" name="transintoaumember" onkeyup="exitsum(this);" placeholder="please enter number of members" size="30" >
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+        
+        
+        
+                
+                <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">6. Other permanent exits</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="otherpermanentexitmember" name="otherpermanentexitmember" onkeyup="exitsum(this);" placeholder="please enter number of members" size="30" >
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+                
+        
+                
+                <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">7. Invalid enrolment withdrawals</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="invalidenrolmentmember" name="invalidenrolmentmember" onkeyup="exitsum(this);" placeholder="please enter number of members" size="30" >
+                </div>
+        </div>
+        </div>
+         <br>
+        
+              
+        
+                
+                <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">8. Members starting <a href="section104.html"  target="_blank">section 104</a> contribution holidays</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="startholidaymember" name="startholidaymember" onkeyup="exitsum(this);" placeholder="please enter number of members" size="30" >
+                </div>
+        </div>
+        </div>
+         <br>
+        
+              
+        
+                
+                <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">9. Members stopping contributions for other reasons</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="stopcontributionmember" name="stopcontributionmember" onkeyup="exitsum(this);" placeholder="please enter number of members" size="30" >
+                </div>
+        </div>
+        </div>
+         <br>
+        
+      
+        
+                <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Total temporary and permanent exits for annual return year</label>
+                            
+              <br>
+               Should Be：<input type='text' disabled="disabled" id='z' style="border:0px solid white; width:400px" />
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+
+        <input type="text" class="form-control" id="activetwoc" name="activetwoc" onkeyup="sum(this);" placeholder="C: total exits" size="30" >
+                    
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+                <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Number of contributing members at end of annual return year</label>
+              
+              <br>
+               Should Be：<input type='text' disabled="disabled" id='y' style="border:0px solid white; width:400px" />
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+
+                <input type="text" class="form-control" id="activetwod" name="activetwod" onkeyup="totalsum(this);" placeholder="A + B − C = D" size="30" >
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+        
+          <h3 class="text-success text-center">Non-contributing members on <a href="section104.html"  target="_blank">section 104</a> contribution holidays</h3>
+        
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">1. Number of members on <a href="section104.html"  target="_blank">section 104</a> contribution holidays at start of annual return year</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="activetwoe" name="activetwoe" onkeyup="noncontributesum(this);" placeholder="please enter number of members" size="30" >
+                </div>
+        </div>
+        </div>
+         <br>
+        
+                <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">2. Members starting section 104 contribution holidays</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="activetwof" name="activetwof" onkeyup="noncontributesum(this);" placeholder="please enter number of members" size="30" >
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+                <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">3. Members ending section 104 contribution holidays and restarting contributions</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="activetwog" name="activetwog" onkeyup="noncontributesum(this);" placeholder="please enter number of members" size="30" >
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+        
+                
+                <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">4. Members ending section 104 contribution holidays but not restarting contributions for any reason</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="activetwoh" name="activetwoh" onkeyup="noncontributesum(this);" placeholder="please enter number of members" size="30" >
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+                        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Number of members on <a href="section104.html"  target="_blank">section 104</a> contribution holidays at end of annual return year</label>
+                     <br>
+               Should Be：<input type='text' disabled="disabled" id='u' style="border:0px solid white; width:400px" />
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="activetwoi" name="activetwoi" onkeyup="totalsum(this);" placeholder="E + F - ( G + H ) = I" size="30" >
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+                
+          <h3 class="text-success text-center">Other non-contributing members (not on <a href="section104.html"  target="_blank">section 104</a> contribution holidays)</h3>
+        
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">1. Number of other non-contributing members (not on <a href="section104.html"  target="_blank">section 104</a> contribution holidays) at start of annual return year</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="activetwoj" name="activetwoj" onkeyup="othersum(this);" placeholder="please enter number of members" size="30" >
+                </div>
+        </div>
+        </div>
+         <br>
+        
+                <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">2. Members stopping contributions without <a href="section104.html"  target="_blank">section 104</a> contribution holidays</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="activetwok" name="activetwok" onkeyup="othersum(this);" placeholder="please enter number of members" size="30" >
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+                <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">3. Members restarting contributions after having stopped contributions without <a href="section104.html"  target="_blank">section 104</a> contribution holidays</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+             <input type="text" class="form-control" id="activetwol" name="activetwol" onkeyup="othersum(this);" placeholder="please enter number of members" size="30" >
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+        
+                
+                <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Number of other non-contributing members (not on <a href="section104.html"  target="_blank">section 104</a> contribution holidays) at end of annual return year</label>
+                <br>
+               Should Be：<input type='text' disabled="disabled" id='v' style="border:0px solid white; width:400px" />
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="activetwom" name="activetwom" onkeyup="totalsum(this);" placeholder="J + K − L = M" size="30" >
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+                        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Total number of members at end of annual return year</label>
+              <br>
+               Should Be：<input type='text' disabled="disabled" id='w' style="border:0px solid white; width:400px" />
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+
+                <input type="text" class="form-control" id="activetwototalnumber" name="activetwototalnumber"  placeholder="Total number of members" size="30" >
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+         
+        <li>
+             <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10"><a href="Activethree.html">
+            <button type="button" class="btn btn-success" id="submitBtn">Save and Next</button></a>
+                 </div>
+            </div>
+        </li>
+        
+        
+                <div class="page-normal">
+	<a href="Activeone.html">&lt;</a>
+	<a href="Activeone.html">1</a>
+	<span class="page-current">2</span>
+	<a href="Activethree.html">3</a>
+	<a href="Activefour.html">4</a>
+	<a href="Activefive.html">5</a>
+	<a href="Activesix.html">6</a>
+	<a href="Activeseven.html">7</a>
+	<a href="Activeeight.html">8</a>
+	<a href="Activethree.html">&gt;</a>
+</div>
+        
+        
+        
+    </form>
+</body>
+    
+    
+<script>
+    
+function sum(obj) {
+var a = document.getElementById("activetwoa");
+var b = document.getElementById("activetwob");
+var c = document.getElementById("activetwoc");
+if(a.value!='')
+{
+y.value=parseInt(a.value);
+
+}
+if(a.value!=''&&b.value!='')
+{
+y.value=parseInt(a.value)+parseInt(b.value);
+
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+y.value=parseInt(a.value)+parseInt(b.value)-parseInt(c.value);
+}
+else y.value = "Please check if you enter all number that we required.";
+}
+    
+    
+    
+
+function entrysum(obj) {
+var a = document.getElementById("newmember");
+var b = document.getElementById("endofholidaymember");
+var c = document.getElementById("aftershoppingmember");
+var d = document.getElementById("transfromotherkiwimember");
+var e = document.getElementById("transfromaumember");
+var f = document.getElementById("transfromotherretirementmember");
+
+    if(a.value!='')
+{
+x.value=parseInt(a.value);
+}
+if(a.value!=''&&b.value!='')
+{
+x.value=parseInt(a.value)+parseInt(b.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+x.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!='')
+{
+x.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value);
+}       
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!='')
+{
+x.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value);
+}       
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!='')
+{
+x.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value);
+}  
+    else x.value = "Please check if you enter all number that we required.";
+}
+
+    
+    
+    function exitsum(obj){
+        var a = document.getElementById("enddatemember");
+        var b = document.getElementById("deathmember");
+        var c = document.getElementById("permanentemigrationmember");
+        var d = document.getElementById("transintootherkiwimember");
+        var e = document.getElementById("transintoaumember");
+        var f = document.getElementById("otherpermanentexitmember");
+        var g = document.getElementById("invalidenrolmentmember");
+        var h = document.getElementById("startholidaymember");
+        var i = document.getElementById("stopcontributionmember");
+
+    
+    
+if(a.value!='')
+{
+z.value=parseInt(a.value);
+}
+if(a.value!=''&&b.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value);
+}       
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value);
+}       
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value);
+}        
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value);
+}
+        
+        else z.value = "Please check if you enter all number that we required.";
+        
+    }
+    
+    
+    
+    
+    
+function noncontributesum(obj) {
+var a = document.getElementById("activetwoe");
+var b = document.getElementById("activetwof");
+var c = document.getElementById("activetwog");
+var d = document.getElementById("activetwoh");
+if(a.value!='')
+{
+u.value=parseInt(a.value);
+
+}
+if(a.value!=''&&b.value!='')
+{
+u.value=parseInt(a.value)+parseInt(b.value);
+
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+u.value=parseInt(a.value)+parseInt(b.value)-parseInt(c.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!='')
+{
+u.value=parseInt(a.value)+parseInt(b.value)-parseInt(c.value)-parseInt(d.value);
+}
+else u.value = "Please check if you enter all number that we required.";
+}
+   
+    
+    
+function othersum(obj) {
+var a = document.getElementById("activetwoj");
+var b = document.getElementById("activetwok");
+var c = document.getElementById("activetwol");
+if(a.value!='')
+{
+v.value=parseInt(a.value);
+
+}
+if(a.value!=''&&b.value!='')
+{
+v.value=parseInt(a.value)+parseInt(b.value);
+
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+v.value=parseInt(a.value)+parseInt(b.value)-parseInt(c.value);
+}
+else y.value = "Please check if you enter all number that we required.";
+}
+    
+    
+function totalsum(obj) {
+var a = document.getElementById("activetwod");
+var b = document.getElementById("activetwoi");
+var c = document.getElementById("activetwom");
+if(a.value!='')
+{
+w.value=parseInt(a.value);
+
+}
+if(a.value!=''&&b.value!='')
+{
+w.value=parseInt(a.value)+parseInt(b.value);
+
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+w.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value);
+}
+else w.value = "Please check if you enter all number that we required.";
+}
+    
+    
+</script>
+</html>

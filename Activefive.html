@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <style type="text/css">
+	
+	/*设置 a 标签的css样式*/
+	.page-normal a{
+		border: 1px;
+		padding: 5px 7px;       
+		margin-left: 20px;/*设置标签 a 之间的间隔*/
+		text-decoration: none;/*去除页码数字下面的下划线*/
+	}
+
+	.page-normal{       
+		text-align: center;
+	}
+	
+	/*进行代码优化，将不同css样式中共有的属性放在一起，有助于提高运行效率*/
+	.page-normal a, .page-normal a:hover, .page-normal .page-prev, .page-normal .page-current{
+		border: 1px;
+		padding: 5px 7px;
+	}
+	
+</style>
+    
+    
+    <title>Active Table 5</title>
+</head>
+<body>
+    <h1  class="text-success text-center">Annual return for KiwiSaver schemes (other than default KiwiSaver schemes)
+    </h1>
+    <h2 class="text-success text-center">Table 5—Profile of non-contributing members (not on section 104 contribution holidays)</h2>
+    
+    <form action="" method='POST' role="form"  class="form-horizontal" id='bookForm'>
+        
+        
+        
+       <h3 class="text-success text-center">How long ago last contribution made (calculated from end of annual return year)</h3>
+        
+       
+        
+         <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">1 year or less</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="lessonenumber" name="lessonenumber" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="lessoneamount" name="lessoneamount" placeholder="please enter scheme assets held for those members ($)" size="50" >
+                  </div>
+            </div>
+        </div>
+         <br>
+        
+         <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">2 years or less, but more than 1 year</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="onetwonumber" name="onetwonumber" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="onetwoamount" name="onetwoamount" placeholder="please enter scheme assets held for those members ($)" size="50" >
+                  </div>
+            </div>
+        </div>
+         <br> <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">3 years or less, but more than 2 years</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="twothreenumber" name="twothreenumber" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="twothreeamount" name="twothreeamount" placeholder="please enter scheme assets held for those members ($)" size="50" >
+                  </div>
+            </div>
+        </div>
+         <br>
+        
+         <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">5 years or less, but more than 3 years</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="threefivenumber" name="threefivenumber" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="threefiveamount" name="threefiveamount" placeholder="please enter scheme assets held for those members ($)" size="50" >
+                  </div>
+            </div>
+        </div>
+         <br>
+        
+        
+            <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">More than 5 years</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="morefivenumber" name="morefivenumber" placeholder="please enter number of members" size="30">
+                </div>
+             <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="morefiveamount" name="morefiveamount" placeholder="please enter scheme assets held for those members ($)" size="50" >
+                  </div>
+            </div>
+        </div>
+         <br>
+        
+        <li>
+             <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10"><a href="Activesix.html">
+            <button type="button" class="btn btn-success" id="submitBtn">Save and Next</button></a>
+                 </div>
+            </div>
+        </li>
+        
+        
+                
+    <div class="page-normal">
+	<a href="Activefour.html">&lt;</a>
+	<a href="Activeone.html">1</a>
+    <a href="Activetwo.html">2</a> 
+    <a href="Activethree.html">3</a>
+    <a href="Activefour.html">4</a>
+	<span class="page-current">5</span>
+	<a href="Activesix.html">6</a>
+	<a href="Activeseven.html">7</a>
+	<a href="Activeeight.html">8</a>
+	<a href="Activesix.html">&gt;</a>
+</div>
+        
+        
+    </form>
+</body>
+    
+    
+<script>
+
+    
+    
+    
+    
+    
+</script>
+</html>

@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <style type="text/css">
+	
+	/*设置 a 标签的css样式*/
+	.page-normal a{
+		border: 1px;
+		padding: 5px 7px;       
+		margin-left: 20px;/*设置标签 a 之间的间隔*/
+		text-decoration: none;/*去除页码数字下面的下划线*/
+	}
+
+	.page-normal{       
+		text-align: center;
+	}
+	
+	/*进行代码优化，将不同css样式中共有的属性放在一起，有助于提高运行效率*/
+	.page-normal a, .page-normal a:hover, .page-normal .page-prev, .page-normal .page-current{
+		border: 1px;
+		padding: 5px 7px;
+	}
+	
+</style>
+    <title>Default Table 2</title>
+</head>
+<body>
+    <h1  class="text-success text-center">Annual return for KiwiSaver schemes (other than default KiwiSaver schemes)
+    </h1>
+    <h2 class="text-success text-center">Table 2—Membership summary</h2>
+    
+    <form action="" method='POST' role="form"  class="form-horizontal" id='bookForm'>
+        <div class="form-group">
+            <label for="text" class="col-sm-10">Number of contributing members at start of annual return year:  </label>
+             <div class="col-sm-10">
+                <input type="text" class="form-control" id="defaulttwoa"  onkeyup="defaultcontributingsum(this);" name="defaulttwoa" placeholder="A: total number of default members" size="42">
+            </div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="defaulttwoatwo"  onkeyup="othercontributingsum(this);" name="defaulttwoatwo" placeholder="A2: total number of other members of scheme" size="42">
+            </div>
+        </div>
+        
+       <h3 class="text-success text-center">Categories of entries of members for annual return year</h3>
+        
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">1. New members (other than transfers from other schemes)</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="denewmember"     onkeyup="defaultentrysum(this);" name="denewmember" placeholder="please enter number of default members" size="42">
+                </div>
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="onewmember"     onkeyup="otherentrysum(this);" name="onewmember" placeholder="please enter number of other members of scheme" size="42">
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+        
+        
+              <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">2. Members restarting contributions at end of <a href="section104.html"  target="_blank">section 104</a> contribution holidays</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="deendofholidaymemebr"     onkeyup="defaultentrysum(this);" name="deendofholidaymemebr" placeholder="please enter number of default members" size="42">
+                </div>
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="oendofholidaymember" onkeyup="otherentrysum(this);" name="oendofholidaymember" placeholder="please enter number of other members of scheme" size="42">
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+        
+              <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">3. Members restarting contributions after stopping contributions for any other reason</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="deafterstopcontributionmember"     onkeyup="defaultentrysum(this);" name="deafterstopcontributionmember" placeholder="please enter number of default members" size="42">
+                </div>
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="oafterstopcontributionmember" onkeyup="otherentrysum(this);" name="oafterstopcontributionmember" placeholder="please enter number of other members of scheme" size="42">
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+        
+              <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">4. Members transferring into scheme from other KiwiSaver schemes</label>
+             
+            <div class="col-sm-10">
+               
+                
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="otransferfromotherkiwisavermember" onkeyup="otherentrysum(this);" name="otransferfromotherkiwisavermember" placeholder="please enter number of other members of scheme" size="42">
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+        
+              <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">5. Members transferring into scheme from Australian superannuation schemes</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="detransferfromaumember"     onkeyup="defaultentrysum(this);" name="detransferfromaumember" placeholder="please enter number of default members" size="42">
+                </div>
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="otransferfromaumember" onkeyup="otherentrysum(this);" name="otransferfromaumember" placeholder="please enter number of other members of scheme" size="42">
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+        
+              <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">6. Members transferring into scheme from other retirement schemes</label>
+             
+            <div class="col-sm-10">
+               
+                
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="otransferfromotherretirementmember" onkeyup="otherentrysum(this);" name="otransferfromotherretirementmember" placeholder="please enter number of other members of scheme" size="42">
+                </div>
+        </div>
+        </div>
+         <br>
+        
+
+        
+              <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Total entries for annual return year</label>
+             
+            <div class="col-sm-10">
+                <br>
+                Should Be：<input type='text' disabled="disabled" id='x' style="border:0px solid white; width:400px" />
+                <div style="width:200px;text-align:right;">
+
+                <input type="text" class="form-control" id="defaulttwob"  onkeyup="defaultcontributingsum(this);" name="defaulttwob" placeholder="B: total entries of default members" size="42">
+                </div>
+                <br>
+               Should Be：<input type='text' disabled="disabled" id='o' style="border:0px solid white; width:400px" />
+                <div style="width:200px;text-align:right;">
+
+                <input type="text" class="form-control" id="defaulttwobtwo"  onkeyup="othercontributingsum(this);" name="defaulttwobtwo" placeholder="B2: total entries of other members of scheme" size="42">
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+              
+        
+
+        
+       <h3 class="text-success text-center">Categories of membership exits for annual return year</h3>
+        
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">1. KiwiSaver end payment date exits</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="deendpaymentmember" onkeyup="defaultexitsum(this);" name="deendpaymentmember" placeholder="please enter number of default members" size="42">
+                </div>
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="oendpaymentmember" onkeyup="otherexitsum(this);" name="oendpaymentmember" placeholder="please enter number of other members of scheme" size="42">
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+        
+              
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">2. Deaths</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="dedeathmember" onkeyup="defaultexitsum(this);" name="dedeathmember" placeholder="please enter number of default members" size="42">
+                </div>
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="odeathmember" onkeyup="otherexitsum(this);" name="odeathmember" placeholder="please enter number of other members of scheme" size="42">
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+              
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">3. Permanent emigration exits</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="depermanentemigrationmember" onkeyup="defaultexitsum(this);" name="depermanentemigrationmember" placeholder="please enter number of default members" size="42">
+                </div>
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="opermanentemigrationmember" onkeyup="otherexitsum(this);" name="opermanentemigrationmember" placeholder="please enter number of other members of scheme" size="42">
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+        
+              
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">4. Transfers out of scheme into other KiwiSaver schemes</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="detransferintootherkiwisavermember" onkeyup="defaultexitsum(this);" name="detransferintootherkiwisavermember" placeholder="please enter number of default members" size="42">
+                </div>
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="otransferintootherkiwisavermember" onkeyup="otherexitsum(this);" name="otransferintootherkiwisavermember" placeholder="please enter number of other members of scheme" size="42">
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+        
+        
+              
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">5. Transfers out of scheme into Australian superannuation schemes</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="detransferintoaumember" onkeyup="defaultexitsum(this);" name="detransferintoaumember" placeholder="please enter number of default members" size="42">
+                </div>
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="otransferintoaumember" onkeyup="otherexitsum(this);" name="otransferintoaumember" placeholder="please enter number of other members of scheme" size="42">
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+        
+        
+        
+              
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">6. Other permanent exits</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="deotherpermanetexitmember" onkeyup="defaultexitsum(this);" name="deotherpermanetexitmember" placeholder="please enter number of default members" size="42">
+                </div>
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="ootherpermanetexitmember" onkeyup="otherexitsum(this);" name="ootherpermanetexitmember" placeholder="please enter number of other members of scheme" size="42">
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+        
+        
+              
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">7. Invalid enrolment withdrawals</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="deinvaildenrolmentmember" onkeyup="defaultexitsum(this);" name="deinvaildenrolmentmember" placeholder="please enter number of default members" size="42">
+                </div>
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="oinvaildenrolmentmember" onkeyup="otherexitsum(this);" name="oinvaildenrolmentmember" placeholder="please enter number of other members of scheme" size="42">
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+        
+        
+        
+              
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">8. Members starting <a href="section104.html"  target="_blank">section 104</a> contribution holidays</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="destartsectionholidaymember" onkeyup="defaultexitsum(this);" name="destartsectionholidaymember" placeholder="please enter number of default members" size="42">
+                </div>
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="ostartsectionholidaymember" onkeyup="otherexitsum(this);" name="ostartsectionholidaymember" placeholder="please enter number of other members of scheme" size="42">
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+        
+        
+        
+              
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">9. Members stopping contributions for other reasons</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="destopcontributionforotherreasonmember" onkeyup="defaultexitsum(this);" name="destopcontributionforotherreasonmember" placeholder="please enter number of default members" size="42">
+                </div>
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="ostopcontributionforotherreasonmember" onkeyup="otherexitsum(this);" name="ostopcontributionforotherreasonmember" placeholder="please enter number of other members of scheme" size="42">
+                </div>
+        </div>
+        </div>
+         <br>
+        
+
+    
+        
+        
+              
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Total temporary and permanent exits for annual return year</label>
+             
+            <div class="col-sm-10">
+                <br>
+               Should Be：<input type='text' disabled="disabled" id='z' style="border:0px solid white; width:400px" />
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="defaulttwoc"  onkeyup="defaultcontributingsum(this);" name="defaulttwoc" placeholder="C: total exits of default members" size="42">
+                </div>
+                <br>
+               Should Be：<input type='text' disabled="disabled" id='p' style="border:0px solid white; width:400px" />
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="defaulttwoctwo"  onkeyup="othercontributingsum(this);" name="defaulttwoctwo" placeholder="C2: total exits of other members of scheme" size="42">
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+
+        
+        
+              
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Number of contributing members at end of annual return year</label>
+             
+            <div class="col-sm-10">
+            <br>
+               Should Be：<input type='text' disabled="disabled" id='y' style="border:0px solid white; width:400px" />
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="defaulttwod" onkeyup="defaulttotalsum(this);"  name="defaulttwod" placeholder="A + B − C = D" size="42">
+                </div>
+            <br>
+               Should Be：<input type='text' disabled="disabled" id='q' style="border:0px solid white; width:400px" />
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="defaulttwodtwo" onkeyup="othertotalsum(this);"  name="defaulttwodtwo" placeholder="A2 + B2 − C2 = D2" size="42">
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+        
+
+        
+        
+        
+        
+        
+        
+       <h3 class="text-success text-center">Non-contributing members on <a href="section104.html"  target="_blank">section 104</a> contribution holidays</h3>
+        
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">1. Number of members on <a href="section104.html"  target="_blank">section 104</a> contribution holidays at start of annual return year</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="defaulttwoe" onkeyup="defaultnoncontributesum(this);" name="defaulttwoe" placeholder="E: number of default members" size="42">
+                </div>
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="defaulttwoetwo" onkeyup="othernoncontributesum(this);" name="defaulttwoetwo" placeholder="E2: number of other members of scheme" size="42">
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+        
+
+        
+        
+                
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">2. Members starting section 104 contribution holidays</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="defaulttwof" onkeyup="defaultnoncontributesum(this);" name="defaulttwof" placeholder="F: number of default members" size="42">
+                </div>
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="defaulttwoftwo" onkeyup="othernoncontributesum(this);" name="defaulttwoftwo" placeholder="F2: number of other members of scheme" size="42">
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+
+
+        
+        
+                
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">3. Members ending section 104 contribution holidays and restarting contributions</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="defaulttwog" onkeyup="defaultnoncontributesum(this);" name="defaulttwog" placeholder="G: number of default members" size="42">
+                </div>
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="defaulttwogtwo" onkeyup="othernoncontributesum(this);" name="defaulttwogtwo" placeholder="G2: number of other members of scheme" size="42">
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+        
+        
+        
+                
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">4. Members ending section 104 contribution holidays but not restarting contributions for any reason</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="defaulttwoh" onkeyup="defaultnoncontributesum(this);" name="defaulttwoh" placeholder="H: number of default members" size="42">
+                </div>
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="defaulttwohtwo" onkeyup="othernoncontributesum(this);" name="defaulttwohtwo" placeholder="H2: number of other members of scheme" size="42">
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+        
+        
+        
+                
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Number of members on <a href="section104.html"  target="_blank">section 104</a> contribution holidays at end of annual return year</label>
+             
+            <div class="col-sm-10">
+                        <br>
+               Should Be：<input type='text' disabled="disabled" id='u' style="border:0px solid white; width:400px" />
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="defaulttwoi" onkeyup="defaulttotalsum(this);"  name="defaulttwoi" placeholder="E + F − (G + H) = I" size="42">
+                </div>
+                            <br>
+               Should Be：<input type='text' disabled="disabled" id='r' style="border:0px solid white; width:400px" />
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="defaulttwoitwo" onkeyup="othertotalsum(this);"  name="defaulttwoitwo" placeholder="E2 + F2 − (G2 + H2) = I2" size="42">
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+         
+          
+                
+        
+        
+       <h3 class="text-success text-center">Other non-contributing members (not on <a href="section104.html"  target="_blank">section 104</a> contribution holidays)</h3>
+        
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">1. Number of other non-contributing members (not on <a href="section104.html"  target="_blank">section 104</a> contribution holidays) at start of annual return year</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="defaulttwoj" onkeyup="defaultothersum(this);" name="defaulttwoj" placeholder="J: number of default members" size="42">
+                </div>
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="defaulttwojtwo" onkeyup="otherothersum(this);" name="defaulttwojtwo" placeholder="J2: number of other members of scheme" size="42">
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+        
+        
+            
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">2. Members stopping contributions without <a href="section104.html"  target="_blank">section 104</a> contribution holidays</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="defaulttwok" onkeyup="defaultothersum(this);" name="defaulttwok" placeholder="K: number of default members" size="42">
+                </div>
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="defaulttwoktwo" onkeyup="otherothersum(this);" name="defaulttwoktwo" placeholder="K2: number of other members of scheme" size="42">
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+        
+            
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">3. Members restarting contributions after having stopped contributions without <a href="section104.html"  target="_blank">section 104</a> contribution holidays</label>
+             
+            <div class="col-sm-10">
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="defaulttwol" onkeyup="defaultothersum(this);" name="defaulttwol" placeholder="L: number of default members" size="42">
+                </div>
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="defaulttwoltwo" onkeyup="otherothersum(this);" name="defaulttwoltwo" placeholder="L2: number of other members of scheme" size="42">
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+        
+            
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Number of other non-contributing members (not on <a href="section104.html"  target="_blank">section 104</a> contribution holidays) at end of annual return year</label>
+             
+            <div class="col-sm-10">
+                                            <br>
+               Should Be：<input type='text' disabled="disabled" id='v' style="border:0px solid white; width:400px" />
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="defaulttwom" onkeyup="defaulttotalsum(this);"  name="defaulttwom" placeholder="J + K − L = M" size="42">
+                </div>
+                                            <br>
+               Should Be：<input type='text' disabled="disabled" id='s' style="border:0px solid white; width:400px" />
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="defaulttwomtwo" onkeyup="othertotalsum(this);"  name="defaulttwomtwo" placeholder="J2 + K2 − L2 = M2" size="42">
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+               
+        <br>
+          <div class="form-group">
+            <label for="text" class="col-sm-10">Total number of members at end of annual return year</label>
+             
+            <div class="col-sm-10">
+                            <br>
+               Should Be：<input type='text' disabled="disabled" id='w' style="border:0px solid white; width:400px" />
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="defaulttwototal" name="defaulttwototal" placeholder="D + I + M" size="42">
+                </div>
+                            <br>
+               Should Be：<input type='text' disabled="disabled" id='t' style="border:0px solid white; width:400px" />
+                <div style="width:200px;text-align:right;">
+                <input type="text" class="form-control" id="defaulttwototaltwo" name="defaulttwototaltwo" placeholder="D2 + I2 + M2" size="42">
+                </div>
+        </div>
+        </div>
+         <br>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+   
+        
+        
+        
+        
+        
+         
+        <li>
+             <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10"><a href="Defaultthree.html">
+            <button type="button" class="btn btn-success" id="submitBtn">Save and Next</button></a>
+                 </div>
+            </div>
+        </li>
+        
+        
+                <div class="page-normal">
+	<a href="Defaultone.html">&lt;</a>
+    <a href="Defaultone.html">1</a>
+	<span class="page-current">2</span>
+	<a href="Defaultthree.html">3</a>
+	<a href="Defaultfour.html">4</a>
+	<a href="Defaultfive.html">5</a>
+	<a href="Defaultsix.html">6</a>
+	<a href="Defaultseven.html">7</a>
+	<a href="Defaulteight.html">8</a>
+    <a href="Defaultnine.html">9</a>
+    <a href="Defaultten.html">10</a>
+	<a href="Defaultthree.html">&gt;</a>
+</div>
+        
+
+        
+        
+    </form>
+</body>
+    
+    
+<script>
+    
+
+
+
+function defaultentrysum(obj) {
+var a = document.getElementById("denewmember");
+var b = document.getElementById("deendofholidaymemebr");
+var c = document.getElementById("deafterstopcontributionmember");
+var d = document.getElementById("detransferfromaumember");
+
+    if(a.value!='')
+{
+x.value=parseInt(a.value);
+}
+if(a.value!=''&&b.value!='')
+{
+x.value=parseInt(a.value)+parseInt(b.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+x.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!='')
+{
+x.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value);
+}       
+  
+    else x.value = "Please check if you enter all number that we required.";
+}
+
+    
+function otherentrysum(obj) {
+var a = document.getElementById("onewmember");
+var b = document.getElementById("oendofholidaymember");
+var c = document.getElementById("oafterstopcontributionmember");
+var d = document.getElementById("otransferfromotherkiwisavermember");
+var e = document.getElementById("otransferfromaumember");
+var f = document.getElementById("otransferfromotherretirementmember");
+
+    if(a.value!='')
+{
+o.value=parseInt(a.value);
+}
+if(a.value!=''&&b.value!='')
+{
+o.value=parseInt(a.value)+parseInt(b.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+o.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!='')
+{
+o.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value);
+}       
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!='')
+{
+o.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value);
+}       
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!='')
+{
+o.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value);
+}  
+    else o.value = "Please check if you enter all number that we required.";
+}
+    
+    
+    function defaultexitsum(obj){
+        var a = document.getElementById("deendpaymentmember");
+        var b = document.getElementById("dedeathmember");
+        var c = document.getElementById("depermanentemigrationmember");
+        var d = document.getElementById("detransferintootherkiwisavermember");
+        var e = document.getElementById("detransferintoaumember");
+        var f = document.getElementById("deotherpermanetexitmember");
+        var g = document.getElementById("deinvaildenrolmentmember");
+        var h = document.getElementById("destartsectionholidaymember");
+        var i = document.getElementById("destopcontributionforotherreasonmember");
+
+    
+    
+if(a.value!='')
+{
+z.value=parseInt(a.value);
+}
+if(a.value!=''&&b.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value);
+}       
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value);
+}       
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value);
+}        
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!='')
+{
+z.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value);
+}
+        
+        else z.value = "Please check if you enter all number that we required.";
+        
+    }
+    
+    
+    
+        function otherexitsum(obj){
+        var a = document.getElementById("oendpaymentmember");
+        var b = document.getElementById("odeathmember");
+        var c = document.getElementById("opermanentemigrationmember");
+        var d = document.getElementById("otransferintootherkiwisavermember");
+        var e = document.getElementById("otransferintoaumember");
+        var f = document.getElementById("ootherpermanetexitmember");
+        var g = document.getElementById("oinvaildenrolmentmember");
+        var h = document.getElementById("ostartsectionholidaymember");
+        var i = document.getElementById("ostopcontributionforotherreasonmember");
+
+    
+    
+if(a.value!='')
+{
+p.value=parseInt(a.value);
+}
+if(a.value!=''&&b.value!='')
+{
+p.value=parseInt(a.value)+parseInt(b.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+p.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!='')
+{
+p.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value);
+}       
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!='')
+{
+p.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value);
+}       
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!='')
+{
+p.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value);
+}        
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!='')
+{
+p.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!='')
+{
+p.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!=''&&e.value!=''&&f.value!=''&&g.value!=''&&h.value!=''&&i.value!='')
+{
+p.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)+parseInt(d.value)+parseInt(e.value)+parseInt(f.value)+parseInt(g.value)+parseInt(h.value)+parseInt(i.value);
+}
+        
+        else p.value = "Please check if you enter all number that we required.";
+        
+    }
+    
+    
+ function defaultcontributingsum(obj) {
+var a = document.getElementById("defaulttwoa");
+var b = document.getElementById("defaulttwob");
+var c = document.getElementById("defaulttwoc");
+if(a.value!='')
+{
+y.value=parseInt(a.value);
+
+}
+if(a.value!=''&&b.value!='')
+{
+y.value=parseInt(a.value)+parseInt(b.value);
+
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+y.value=parseInt(a.value)+parseInt(b.value)-parseInt(c.value);
+}
+else y.value = "Please check if you enter all number that we required.";
+}
+    
+    
+function othercontributingsum(obj) {
+var a = document.getElementById("defaulttwoatwo");
+var b = document.getElementById("defaulttwobtwo");
+var c = document.getElementById("defaulttwoctwo");
+if(a.value!='')
+{
+q.value=parseInt(a.value);
+
+}
+if(a.value!=''&&b.value!='')
+{
+q.value=parseInt(a.value)+parseInt(b.value);
+
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+q.value=parseInt(a.value)+parseInt(b.value)-parseInt(c.value);
+}
+else q.value = "Please check if you enter all number that we required.";
+}
+       
+    
+    
+    
+function defaultnoncontributesum(obj) {
+var a = document.getElementById("defaulttwoe");
+var b = document.getElementById("defaulttwof");
+var c = document.getElementById("defaulttwog");
+var d = document.getElementById("defaulttwoh");
+if(a.value!='')
+{
+u.value=parseInt(a.value);
+
+}
+if(a.value!=''&&b.value!='')
+{
+u.value=parseInt(a.value)+parseInt(b.value);
+
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+u.value=parseInt(a.value)+parseInt(b.value)-parseInt(c.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!='')
+{
+u.value=parseInt(a.value)+parseInt(b.value)-parseInt(c.value)-parseInt(d.value);
+}
+else u.value = "Please check if you enter all number that we required.";
+}
+    
+    
+    
+    function othernoncontributesum(obj) {
+var a = document.getElementById("defaulttwoetwo");
+var b = document.getElementById("defaulttwoftwo");
+var c = document.getElementById("defaulttwogtwo");
+var d = document.getElementById("defaulttwohtwo");
+if(a.value!='')
+{
+r.value=parseInt(a.value);
+
+}
+if(a.value!=''&&b.value!='')
+{
+r.value=parseInt(a.value)+parseInt(b.value);
+
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+r.value=parseInt(a.value)+parseInt(b.value)-parseInt(c.value);
+}
+if(a.value!=''&&b.value!=''&&c.value!=''&&d.value!='')
+{
+r.value=parseInt(a.value)+parseInt(b.value)-parseInt(c.value)-parseInt(d.value);
+}
+else r.value = "Please check if you enter all number that we required.";
+}
+   
+    
+    
+function defaultothersum(obj) {
+var a = document.getElementById("defaulttwoj");
+var b = document.getElementById("defaulttwok");
+var c = document.getElementById("defaulttwol");
+if(a.value!='')
+{
+v.value=parseInt(a.value);
+
+}
+if(a.value!=''&&b.value!='')
+{
+v.value=parseInt(a.value)+parseInt(b.value);
+
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+v.value=parseInt(a.value)+parseInt(b.value)-parseInt(c.value);
+}
+else y.value = "Please check if you enter all number that we required.";
+}
+    
+    
+    
+    
+        
+function otherothersum(obj) {
+var a = document.getElementById("defaulttwojtwo");
+var b = document.getElementById("defaulttwoktwo");
+var c = document.getElementById("defaulttwoltwo");
+if(a.value!='')
+{
+s.value=parseInt(a.value);
+
+}
+if(a.value!=''&&b.value!='')
+{
+s.value=parseInt(a.value)+parseInt(b.value);
+
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+s.value=parseInt(a.value)+parseInt(b.value)-parseInt(c.value);
+}
+else s.value = "Please check if you enter all number that we required.";
+}
+    
+    
+function defaulttotalsum(obj) {
+var a = document.getElementById("defaulttwod");
+var b = document.getElementById("defaulttwoi");
+var c = document.getElementById("defaulttwom");
+if(a.value!='')
+{
+w.value=parseInt(a.value);
+
+}
+if(a.value!=''&&b.value!='')
+{
+w.value=parseInt(a.value)+parseInt(b.value);
+
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+w.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value);
+}
+else w.value = "Please check if you enter all number that we required.";
+}
+
+    
+    
+    
+    function othertotalsum(obj) {
+var a = document.getElementById("defaulttwodtwo");
+var b = document.getElementById("defaulttwoitwo");
+var c = document.getElementById("defaulttwomtwo");
+if(a.value!='')
+{
+t.value=parseInt(a.value);
+
+}
+if(a.value!=''&&b.value!='')
+{
+t.value=parseInt(a.value)+parseInt(b.value);
+
+}
+if(a.value!=''&&b.value!=''&&c.value!='')
+{
+t.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value);
+}
+else t.value = "Please check if you enter all number that we required.";
+}
+    
+</script>
+</html>
